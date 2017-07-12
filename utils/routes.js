@@ -40,7 +40,7 @@ class Routes{
 			// 		response.status(200).json(result);
 			// 	});
 			// }
-			response.status(200).json(request);
+			response.status(200).json(request.params)
 
 		});
 
