@@ -12,10 +12,10 @@ class Db{
 	}
 
 	onConnect(callback){
-		// this.mongoClient.connect(this.mongoURL, (err, db) => {
-		// 	assert.equal(null, err);
-		// 	callback(db,this.ObjectID);
-		// });
+		this.mongoClient.connect(this.mongoURL, (err, db) => {
+			assert.equal(null, err);
+			callback(db, this.ObjectID);
+		});
 	}
 }
 module.exports = new Db();

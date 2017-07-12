@@ -28,7 +28,7 @@ class Routes{
 			} else {
 				helper.userNameCheck( {
 					username : request.params.username.toLowerCase()
-				}, (count)=>{
+				}, (count) =>{
 
 					let result = {};
 					
