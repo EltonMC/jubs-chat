@@ -19,8 +19,8 @@ const config = require('./utils/config');
 class Server{
 
     constructor(){
-        this.port =  process.env.PORT || 4000;
-        this.host = `localhost`;
+        this.port =  process.env.PORT || 1337;
+        this.host = `http://chat-jubs.azurewebsites.net`;
         
         this.app = express();
         this.http = http.Server(this.app);
