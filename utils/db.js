@@ -5,7 +5,7 @@
  
 "use strict";
 /*requiring mongodb node modules */
-const mongodb = require('mongodb').MongoClient;;
+const mongodb = require('mongodb').MongoClient;
 const assert = require('assert');
 
 class Db{
@@ -16,7 +16,7 @@ class Db{
 	}
 
 	onConnect(callback){
-		mongoClient.connect("mongodb://mongojubs:ZrOeAeyb6mds1zymz6PVDmz4u0QIiSa2ITpsoxtcoQeMWOP0BovQHohoZhd69PRuhevtHZ29rxzIcGQGRPIAFQ==@mongojubs.documents.azure.com:10255/?ssl=true", function (err, db) {
+		this.mongoClient.connect("mongodb://mongojubs:ZrOeAeyb6mds1zymz6PVDmz4u0QIiSa2ITpsoxtcoQeMWOP0BovQHohoZhd69PRuhevtHZ29rxzIcGQGRPIAFQ==@mongojubs.documents.azure.com:10255/?ssl=true", function (err, db) {
 			assert.equal(null, err);
 			callback(db,this.ObjectID);
 		});

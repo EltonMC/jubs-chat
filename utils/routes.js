@@ -26,19 +26,19 @@ class Routes{
 					message : `username cant be empty.`
 				});
 			} else {
-				// helper.userNameCheck( {
-				// 	username : request.params.username.toLowerCase()
-				// }, (count)=>{
+				helper.userNameCheck( {
+					username : request.params.username.toLowerCase()
+				}, (count)=>{
 
-				// 	let result = {};
+					let result = {};
 					
-				// 	if (count > 0) {
-				// 		result.error = true;
-				// 	} else {
-				// 		result.error = false;
-				// 	}
+					if (count > 0) {
+						result.error = true;
+					} else {
+						result.error = false;
+					}
 					response.status(200).json(request.params);
-				// });
+				});
 			}
 
 		});
