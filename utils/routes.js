@@ -202,6 +202,10 @@ class Routes{
 			response.sendFile(path.join(__dirname,'../dist/index.html'));
 		});
 		
+		this.app.get('/', function (req, res) {
+			res.send('Hello World!');
+		});
+		
 	}
 
 	routesConfig(){
