@@ -13,28 +13,17 @@ const cors = require('cors');
 
 const socketEvents = require('./utils/socket'); 
 const routes = require('./utils/routes'); 
-const config = require('./utils/config'); 
 
 
 class Server{
 
     constructor(){
-        this.port =  process.env.PORT || 4000;
-        this.host = `localhost`;
+        this.port =  process.env.PORT || 1337;
+        this.host = `chat-jubs.azurewebsites.net`;
         
         this.app = express();
         this.http = http.Server(this.app);
         this.socket = socketio(this.http);
-    }
-
-    appConfig(){        
-        this.app.use(
-            bodyParser.json()
-        );
-        this.app.use(
-        	cors()
-        );
-        new config(this.app);
     }
 
     /* Including app Routes starts*/
@@ -46,16 +35,11 @@ class Server{
 
     appExecute(){
 
-        this.appConfig();
         this.includeRoutes();
-        var server = this.http.createServer(function(request, response) {
-            response.writeHead(200, {"Content-Type": "text/plain"});
-            response.end("Hello World!");
+        this.http.listen(this.port, () => {
+            console.log(`Listening on`);
         });
-        server.listen(this.port);
-        // this.http.listen(this.port, this.host, () => {
-        //     console.log(`Listening on http://${this.host}:${this.port}`);
-        // });
+
     }
 
 }
