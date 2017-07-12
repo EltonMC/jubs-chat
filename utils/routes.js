@@ -18,7 +18,7 @@ class Routes{
 	/* creating app Routes starts */
 	appRoutes(){
 
-		this.app.post('/usernameCheck',(request,response) =>{
+		this.app.post('/usernameCheck', function (request, response) {
 
 			if (request.body.username === "") {
 				response.status(412).json({
