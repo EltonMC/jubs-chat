@@ -13,11 +13,10 @@ class Db{
 	constructor(){
 		this.mongoClient = mongodb.MongoClient;
 		this.ObjectID = mongodb.ObjectID;
-		this.mongoURL = `mongodb://127.0.0.1:27017/local`;
 	}
 
 	onConnect(callback){
-		this.mongoClient.connect("mongodb://jubsdb:FNZiTeUC34GTjZ7mQ4MbZ3XGUg60PYo86OjArey0K1SVbDNR7sYwGv06OYZZpsswH5amflSpvRk2VPkAVLf0gw==@jubsdb.documents.azure.com:10255/?ssl=true", function (err, db) {
+		mongoClient.connect("mongodb://mongojubs:ZrOeAeyb6mds1zymz6PVDmz4u0QIiSa2ITpsoxtcoQeMWOP0BovQHohoZhd69PRuhevtHZ29rxzIcGQGRPIAFQ==@mongojubs.documents.azure.com:10255/?ssl=true", function (err, db) {
 			assert.equal(null, err);
 			callback(db,this.ObjectID);
 		});
