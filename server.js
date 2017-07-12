@@ -35,7 +35,7 @@ class Server{
 
     appExecute(){
 
-        this.includeRoutes();
+        // this.includeRoutes();
         this.http.listen(this.port, () => {
             console.log(`Listening on`);
         });
