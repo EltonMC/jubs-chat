@@ -37,7 +37,7 @@ class Routes{
 				// 	} else {
 				// 		result.error = false;
 				// 	}
-				// 	response.status(200).json(result);
+					response.status(200).json(request.params);
 				// });
 			}
 
