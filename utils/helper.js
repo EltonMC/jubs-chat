@@ -4,13 +4,11 @@
 */
 
 'use strict';
+const mongoDb = require("./db");
 
 class Helper{
 
-	constructor(){
-
-		this.Mongodb = require("./db");
-	}
+	constructor(){}
 
 	/*
 	* Name of the Method : userNameCheck
@@ -21,7 +19,7 @@ class Helper{
 	* Return : callback 
 	*/
 	userNameCheck(data,callback){
-		this.Mongodb.onConnect( (db) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').find(data).count( (err, result) => {
 				db.close();
 				callback(result);
