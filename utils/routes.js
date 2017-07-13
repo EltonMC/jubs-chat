@@ -212,7 +212,7 @@ class Routes{
 			// 		res.status(200).json(result);
 			// 	});	
 			// });
-			res.send("Servidor ON!");
+			res.send("Server ON!");
 		});
 
 	}
