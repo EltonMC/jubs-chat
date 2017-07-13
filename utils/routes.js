@@ -202,7 +202,7 @@ class Routes{
 		// });
 		
 		this.app.get('/', function (req, res) {
-			mongoDb.connectMongo(db => {
+			mongoDb.onConnect(db => {
 				let data = {'user': 'elton'};
 				db.collection('users').insertOne(data, (err, result) =>{
 				});
