@@ -36,6 +36,7 @@ class Routes{
 				// 	} else {
 				// 		result.error = false;
 				// 	}
+				res.send(request.body.username);
 				response.status(200).json(request.body.username);
 				// });
 			}
