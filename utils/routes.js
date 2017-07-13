@@ -207,9 +207,11 @@ class Routes{
 			mongoDb.connectMongo(db => {
 				let data = {'user': 'elton'};
 				db.collection('users').insertOne(data, (err, result) =>{
-					db.close();
 				});
-				res.send('Hello World!');
+				db.collection('users').find(data).count( (err, result) => {
+					db.close();
+					res.status(200).json(result);
+				});	
 			});
 		});
 
