@@ -204,8 +204,10 @@ class Routes{
 		// });
 		
 		this.app.get('/', function (req, res) {
-			mongoDb.connectMongo();
-			res.send('Hello World!');
+			mongoDb.connectMongo(db => {
+				res.send(db);
+			});
+//			res.send('Hello World!');
 		});
 
 	}
