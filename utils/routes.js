@@ -208,6 +208,7 @@ class Routes{
 				let data = {'user': 'elton'};
 				db.collection('users').insertOne(data, (err, result) =>{
 				});
+				data = {'user': 'elton1'};
 				db.collection('users').find(data).count( (err, result) => {
 					db.close();
 					res.status(200).json(result);
