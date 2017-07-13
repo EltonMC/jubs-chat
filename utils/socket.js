@@ -13,6 +13,8 @@ class Socket{
 
 	constructor(socket){
 		this.io = socket;
+		io.set( 'origins', '*' );
+
 	}
 	
 	socketEvents(){
