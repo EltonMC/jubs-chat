@@ -22,6 +22,7 @@ class Server{
         this.host = `chat-jubs.azurewebsites.net`;
         
         this.app = express();
+        this.app.use(bodyParser.json()); // support json encoded bodies
         this.http = http.Server(this.app);
         this.socket = socketio(this.http);
     }

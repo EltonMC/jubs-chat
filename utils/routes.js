@@ -19,7 +19,7 @@ class Routes{
 	appRoutes(){
 
 		this.app.post('/usernameCheck', function (request, response) {
-			if (request.params.username === "") {
+			if (request.body.username === "") {
 				response.status(412).json({
 					error : true,
 					message : `username cant be empty.`
@@ -36,7 +36,7 @@ class Routes{
 				// 	} else {
 				// 		result.error = false;
 				// 	}
-				response.send(request.params.username);
+				response.send(request.body.username);
 				// });
 			}
 		});
