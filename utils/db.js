@@ -17,5 +17,11 @@ class Db{
 			callback(db, this.ObjectID);
 		});
 	}
+	connectMongo(){
+		var mongoClient = require("mongodb").MongoClient;
+		mongoClient.connect("mongodb://mongojubs:ZrOeAeyb6mds1zymz6PVDmz4u0QIiSa2ITpsoxtcoQeMWOP0BovQHohoZhd69PRuhevtHZ29rxzIcGQGRPIAFQ==@mongojubs.documents.azure.com:10255/?ssl=true", function (err, db) {
+			db.close();
+		});
+	}
 }
 module.exports = new Db();

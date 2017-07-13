@@ -6,11 +6,11 @@
 'use strict';
 
 const helper = require('./helper');
+const mongoDb = require("./db");
 
 class Routes{
 
 	constructor(app){
-		this.Mongodb = require("./db");
 		this.app = app;
 	}
 
@@ -204,12 +204,7 @@ class Routes{
 		// });
 		
 		this.app.get('/', function (req, res) {
-			this.Mongodb.onConnect( (db,ObjectID) => {
-				// db.collection('users').insertOne(data, (err, result) =>{
-				// 	db.close();
-				// 	callback(err,result);
-				// });
-			});
+			mongoDb.connectMongo();
 			res.send('Hello World!');
 		});
 
