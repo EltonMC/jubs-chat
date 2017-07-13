@@ -7,10 +7,11 @@ class Db{
 	constructor(){}
 
 	onConnect(callback){
-		var mongoClient = require("mongodb").MongoClient;
+		var mongoDb = require("mongodb")
+		var mongoClient = mongoDb.MongoClient;
 		mongoClient.connect("mongodb://mongojubs:ZrOeAeyb6mds1zymz6PVDmz4u0QIiSa2ITpsoxtcoQeMWOP0BovQHohoZhd69PRuhevtHZ29rxzIcGQGRPIAFQ==@mongojubs.documents.azure.com:10255/?ssl=true", function (err, db) {
 			assert.equal(null, err);
-			callback(db);
+			callback(db, mongoDb.ObjectID);
 		});
 	}
 
