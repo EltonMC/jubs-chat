@@ -18,30 +18,28 @@ class Routes{
 	/* creating app Routes starts */
 	appRoutes(){
 
-		// this.app.post('/usernameCheck', function (request, response) {
+		this.app.post('/usernameCheck', function (request, response) {
+			if (request.params.username === "") {
+				response.status(412).json({
+					error : true,
+					message : `username cant be empty.`
+				});
+			} else {
+				helper.userNameCheck( {
+					username : request.params.username.toLowerCase()
+				}, (count) =>{
 
-		// 	if (request.params.username === "") {
-		// 		response.status(412).json({
-		// 			error : true,
-		// 			message : `username cant be empty.`
-		// 		});
-		// 	} else {
-		// 		helper.userNameCheck( {
-		// 			username : request.params.username.toLowerCase()
-		// 		}, (count) =>{
-
-		// 			let result = {};
+					let result = {};
 					
-		// 			if (count > 0) {
-		// 				result.error = true;
-		// 			} else {
-		// 				result.error = false;
-		// 			}
-		// 			response.status(200).json(request.params);
-		// 		});
-		// 	}
-
-		// });
+					if (count > 0) {
+						result.error = true;
+					} else {
+						result.error = false;
+					}
+					response.status(200).json(request.params);
+				});
+			}
+		});
 
 		// this.app.post('/registerUser',(request,response) =>{
 

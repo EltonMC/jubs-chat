@@ -21,7 +21,7 @@ class Helper{
 	* Return : callback 
 	*/
 	userNameCheck(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		this.Mongodb.onConnect( (db) => {
 			db.collection('users').find(data).count( (err, result) => {
 				db.close();
 				callback(result);
