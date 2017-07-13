@@ -36,7 +36,7 @@ class Routes{
 				// 	} else {
 				// 		result.error = false;
 				// 	}
-				response.send(request.params);
+				response.send(request.params('username'));
 				// });
 			}
 		});
