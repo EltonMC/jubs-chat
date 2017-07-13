@@ -22,9 +22,17 @@ class Server{
         this.host = `chat-jubs.azurewebsites.net`;
         
         this.app = express();
-        this.app.use(bodyParser.json()); // support json encoded bodies
         this.http = http.Server(this.app);
         this.socket = socketio(this.http);
+    }
+
+    appConfig(){        
+        this.app.use(
+            bodyParser.json()
+        );
+        this.app.use(
+        	cors()
+        );
     }
 
     /* Including app Routes starts*/
@@ -35,10 +43,11 @@ class Server{
     /* Including app Routes ends*/  
 
     appExecute(){
-
+        this.appConfig();
         this.includeRoutes();
+
         this.http.listen(this.port, () => {
-            console.log(`Listening on`);
+            console.log(`Listening on 1337`);
         });
 
     }
