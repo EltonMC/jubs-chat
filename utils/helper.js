@@ -36,7 +36,7 @@ class Helper{
 	* Return : callback 
 	*/
 	login(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').findAndModify( data ,[], {$set: {'online': 'Y'}},{},(err, result) => {
 				db.close();
 				callback(err,result.value);
@@ -53,7 +53,7 @@ class Helper{
 	* Return : callback 
 	*/
 	registerUser(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').insertOne(data, (err, result) =>{
 				db.close();
 				callback(err,result);
@@ -70,7 +70,7 @@ class Helper{
 	* Return : callback 
 	*/
 	userSessionCheck(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').findOne( { _id : ObjectID(data.userId) , online : 'Y'}, (err, result) => {
 				db.close();
 				callback(err,result);
@@ -88,7 +88,7 @@ class Helper{
 	* Return : callback 
 	*/
 	getUserInfo(userId,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').findOne( { _id : ObjectID(userId)}, (err, result) => {
 				db.close();
 				callback(err,result);
@@ -105,7 +105,7 @@ class Helper{
 	* Return : callback 
 	*/
 	addSocketId(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').update( { _id : ObjectID(data.id)}, data.value ,(err, result) => {
 				db.close();
 				callback(err,result.result);
@@ -122,7 +122,7 @@ class Helper{
 	* Return : callback 
 	*/
 	getChatList(userId, callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('users').find({'online':'Y' , socketId : { $ne : userId }}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
@@ -139,7 +139,7 @@ class Helper{
 	* Return : callback 
 	*/
 	insertMessages(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('messages').insertOne(data, (err, result) =>{
 				db.close();
 				callback(err,result);
@@ -177,7 +177,7 @@ class Helper{
 	        	},
 	        ]
 	    };
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			db.collection('messages').find(data).sort({'timestamp':1}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
@@ -200,7 +200,7 @@ class Helper{
   				online : 'N'
   			}
   		};
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		mongoDb.onConnect(db => {
 			
 			let condition = {};
 			if (isSocketId) {

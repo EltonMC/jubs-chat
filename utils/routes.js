@@ -41,160 +41,160 @@ class Routes{
 			}
 		});
 
-		// this.app.post('/registerUser',(request,response) =>{
+		this.app.post('/registerUser',(request,response) =>{
 
-		// 	const data = {
-		// 		username : (request.body.username).toLowerCase(),
-		// 		email : request.body.email,
-		// 		password : request.body.password
-		// 	};
+			const data = {
+				username : (request.body.username).toLowerCase(),
+				email : request.body.email,
+				password : request.body.password
+			};
 
-		// 	let registrationResponse = {}
+			let registrationResponse = {}
 
-		// 	if(data.username === '') {
+			if(data.username === '') {
 
-	    //         registrationResponse.error = true;
-	    //         registrationResponse.message = `username cant be empty.`;
-	    //         response.status(412).json(registrationResponse);
+	            registrationResponse.error = true;
+	            registrationResponse.message = `username cant be empty.`;
+	            response.status(412).json(registrationResponse);
 
-	    //     }else if(data.email === ''){
+	        }else if(data.email === ''){
 				            
-	    //         registrationResponse.error = true;
-	    //         registrationResponse.message = `email cant be empty.`;
-	    //         response.status(412).json(registrationResponse);
+	            registrationResponse.error = true;
+	            registrationResponse.message = `email cant be empty.`;
+	            response.status(412).json(registrationResponse);
 
-	    //     }else if(data.password === ''){
+	        }else if(data.password === ''){
 				            
-	    //         registrationResponse.error = true;
-	    //         registrationResponse.message = `password cant be empty.`;
-	    //         response.status(412).json(registrationResponse);
+	            registrationResponse.error = true;
+	            registrationResponse.message = `password cant be empty.`;
+	            response.status(412).json(registrationResponse);
 
-	    //     }else{
+	        }else{
 	        	
-	    //     	data.timestamp = Math.floor(new Date() / 1000);
-		// 		data.online = 'Y' ;
-		// 		data.socketId = '' ;
+	        	data.timestamp = Math.floor(new Date() / 1000);
+				data.online = 'Y' ;
+				data.socketId = '' ;
 
-	    //        	helper.registerUser( data, (error,result)=>{
+	           	helper.registerUser( data, (error,result)=>{
 
-	    //        		if (error) {
+	           		if (error) {
 
-        //    				registrationResponse.error = true;
-	    //         		registrationResponse.message = `Server error.`;
-	    //        			response.status(404).json(registrationResponse);
-	    //        		}else{
+           				registrationResponse.error = true;
+	            		registrationResponse.message = `Server error.`;
+	           			response.status(404).json(registrationResponse);
+	           		}else{
 
-	    //        			registrationResponse.error = false;
-	    //        			registrationResponse.userId = result.insertedId;
-	    //         		registrationResponse.message = `User registration successful.`;
-	    //        			response.status(200).json(registrationResponse);
-	    //        		}
-		// 		});
-	    //     }
-		// });
+	           			registrationResponse.error = false;
+	           			registrationResponse.userId = result.insertedId;
+	            		registrationResponse.message = `User registration successful.`;
+	           			response.status(200).json(registrationResponse);
+	           		}
+				});
+	        }
+		});
 
-		// this.app.post('/login',(request,response) =>{
+		this.app.post('/login',(request,response) =>{
 
-		// 	const data = {
-		// 		username : (request.body.username).toLowerCase(),
-		// 		password : request.body.password
-		// 	};
+			const data = {
+				username : (request.body.username).toLowerCase(),
+				password : request.body.password
+			};
 
-		// 	let loginResponse = {}
+			let loginResponse = {}
 
-		// 	if(data.username === '' || data.username === null) {
+			if(data.username === '' || data.username === null) {
 
-	    //         loginResponse.error = true;
-	    //         loginResponse.message = `username cant be empty.`;
-	    //         response.status(412).json(loginResponse);
+	            loginResponse.error = true;
+	            loginResponse.message = `username cant be empty.`;
+	            response.status(412).json(loginResponse);
 
-	    //     }else if(data.password === '' || data.password === null){
+	        }else if(data.password === '' || data.password === null){
 				            
-	    //         loginResponse.error = true;
-	    //         loginResponse.message = `password cant be empty.`;
-	    //         response.status(412).json(loginResponse);
+	            loginResponse.error = true;
+	            loginResponse.message = `password cant be empty.`;
+	            response.status(412).json(loginResponse);
 
-	    //     }else{
+	        }else{
 
-	    //        	helper.login( data, (error,result)=>{
+	           	helper.login( data, (error,result)=>{
 
-	    //        		if (error || result === null) {
+	           		if (error || result === null) {
 
-	    //        			loginResponse.error = true;
-	    //         		loginResponse.message = `Server error.`;
-	    //        			response.status(404).json(loginResponse);
-	    //        		}else{
-	    //        			loginResponse.error = false;
-	    //        			loginResponse.userId = result._id;
-	    //         		loginResponse.message = `User logged in.`;
-	    //        			response.status(200).json(loginResponse);
-	    //        		}
-		// 		});
-	    //     }
-		// });
+	           			loginResponse.error = true;
+	            		loginResponse.message = `Server error.`;
+	           			response.status(404).json(loginResponse);
+	           		}else{
+	           			loginResponse.error = false;
+	           			loginResponse.userId = result._id;
+	            		loginResponse.message = `User logged in.`;
+	           			response.status(200).json(loginResponse);
+	           		}
+				});
+	        }
+		});
 
-		// this.app.post('/userSessionCheck',(request,response) =>{
+		this.app.post('/userSessionCheck',(request,response) =>{
 
-		// 	let userId = request.body.userId;
-		// 	let sessionCheckResponse = {}
+			let userId = request.body.userId;
+			let sessionCheckResponse = {}
 			
-		// 	if (userId == '') {
+			if (userId == '') {
 
-		// 		sessionCheckResponse.error = true;
-	    //         sessionCheckResponse.message = `User Id cant be empty.`;
-	    //         response.status(412).json(sessionCheckResponse);
+				sessionCheckResponse.error = true;
+	            sessionCheckResponse.message = `User Id cant be empty.`;
+	            response.status(412).json(sessionCheckResponse);
 
-		// 	}else{
+			}else{
 
-	    //        	helper.userSessionCheck( { 
-	    //        		userId : userId,
-	    //        	}, (error,result)=>{
+	           	helper.userSessionCheck( { 
+	           		userId : userId,
+	           	}, (error,result)=>{
 	           		
-	    //        		if (error || result === null) {
+	           		if (error || result === null) {
 
-	    //        			sessionCheckResponse.error = true;
-	    //         		sessionCheckResponse.message = `Server error.`;
-	    //        			response.status(503).json(sessionCheckResponse);
-	    //        		}else{
+	           			sessionCheckResponse.error = true;
+	            		sessionCheckResponse.message = `Server error.`;
+	           			response.status(503).json(sessionCheckResponse);
+	           		}else{
 
-	    //        			sessionCheckResponse.error = false;
-	    //        			sessionCheckResponse.username = result.username;
-	    //         		sessionCheckResponse.message = `User logged in.`;
-	    //        			response.status(200).json(sessionCheckResponse);
-	    //        		}
-		// 		});
-	    //     }
-		// });
+	           			sessionCheckResponse.error = false;
+	           			sessionCheckResponse.username = result.username;
+	            		sessionCheckResponse.message = `User logged in.`;
+	           			response.status(200).json(sessionCheckResponse);
+	           		}
+				});
+	        }
+		});
 
-		// this.app.post('/getMessages',(request,response) =>{
+		this.app.post('/getMessages',(request,response) =>{
 
-		// 	let userId = request.body.userId;
-		// 	let toUserId = request.body.toUserId;
-		// 	let messages = {}
+			let userId = request.body.userId;
+			let toUserId = request.body.toUserId;
+			let messages = {}
 			
-		// 	if (userId == '') {
-		// 		messages.error = true;
-	    //         messages.message = `userId cant be empty.`;
-	    //         response.status(200).json(messages);
-		// 	}else{
+			if (userId == '') {
+				messages.error = true;
+	            messages.message = `userId cant be empty.`;
+	            response.status(200).json(messages);
+			}else{
 
-	    //        	helper.getMessages( userId, toUserId, (error,result)=>{
+	           	helper.getMessages( userId, toUserId, (error,result)=>{
 
-        //   			if (error) {
+          			if (error) {
 
-	    //        			messages.error = true;
-	    //         		messages.message = `Server error.`;
-	    //        			response.status(200).json(messages);
+	           			messages.error = true;
+	            		messages.message = `Server error.`;
+	           			response.status(200).json(messages);
 
-	    //        		}else{
+	           		}else{
 
-	    //        			messages.error = false;
-	    //         		messages.messages = result;
-	    //        			response.status(200).json(messages);
-	    //        		}
-		// 		});
-	    //     }
-		// });
+	           			messages.error = false;
+	            		messages.messages = result;
+	           			response.status(200).json(messages);
+	           		}
+				});
+	        }
+		});
 
 
 		// this.app.get('*',(request,response) =>{
