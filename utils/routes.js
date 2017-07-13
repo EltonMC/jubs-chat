@@ -205,9 +205,9 @@ class Routes{
 		
 		this.app.get('/', function (req, res) {
 			mongoDb.connectMongo(db => {
-				res.send(db);
+				res.send('Hello World!');
+				//res.send(db);
 			});
-//			res.send('Hello World!');
 		});
 
 	}
