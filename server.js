@@ -33,6 +33,7 @@ class Server{
         this.app.use(
         	cors()
         );
+        new config(this.app);
     }
 
     /* Including app Routes starts*/
