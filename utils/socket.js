@@ -13,7 +13,7 @@ class Socket{
 
 	constructor(socket){
 		this.io = socket;
-		io.set( 'origins', '*' );
+		this.io.set('origins', '*:*');
 
 	}
 	
