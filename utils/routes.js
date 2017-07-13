@@ -205,8 +205,11 @@ class Routes{
 		
 		this.app.get('/', function (req, res) {
 			mongoDb.connectMongo(db => {
+				let data = {'user': 'elton'};
+				db.collection('users').insertOne(data, (err, result) =>{
+					db.close();
+				});
 				res.send('Hello World!');
-				console.log(db);
 			});
 		});
 
