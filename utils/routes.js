@@ -36,7 +36,7 @@ class Routes{
 				// 	} else {
 				// 		result.error = false;
 				// 	}
-				response.send(request.params('username'));
+				response.send(request.params.username);
 				// });
 			}
 		});
@@ -202,16 +202,17 @@ class Routes{
 		// });
 		
 		this.app.get('/', function (req, res) {
-			mongoDb.onConnect(db => {
-				let data = {'user': 'elton'};
-				db.collection('users').insertOne(data, (err, result) =>{
-				});
-				data = {'user': 'elton1'};
-				db.collection('users').find(data).count( (err, result) => {
-					db.close();
-					res.status(200).json(result);
-				});	
-			});
+			// mongoDb.onConnect(db => {
+			// 	let data = {'user': 'elton'};
+			// 	db.collection('users').insertOne(data, (err, result) =>{
+			// 	});
+			// 	data = {'user': 'elton1'};
+			// 	db.collection('users').find(data).count( (err, result) => {
+			// 		db.close();
+			// 		res.status(200).json(result);
+			// 	});	
+			// });
+			res.send("Server ON!");
 		});
 
 	}
