@@ -46,7 +46,7 @@ class Server{
         this.appConfig();
         this.includeRoutes();
 
-        this.http.listen(this.port, () => {
+        this.http.listen(this.port, this.port, () => {
             console.log(`Listening on 1337`);
         });
 
