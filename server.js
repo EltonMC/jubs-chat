@@ -1,7 +1,3 @@
-/*
-* Real time private chatting app using Angular 2, Nodejs, mongodb and Socket.io
-* @author Shashank Tiwari
-*/
 
 'use strict';
 
@@ -31,7 +27,7 @@ class Server{
             bodyParser.json()
         );
         this.app.use(
-        	cors({credentials: true})
+        	cors()
         );
     }
 
