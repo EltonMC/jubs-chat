@@ -125,7 +125,7 @@ class Helper{
 	*/
 	getChatList(userId, callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').find({'online':'Y' , socketId : { $ne : userId }}).toArray( (err, result) => {
+			db.collection('users').find({socketId : { $ne : userId }}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
