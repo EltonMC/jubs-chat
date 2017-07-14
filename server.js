@@ -31,7 +31,7 @@ class Server{
             bodyParser.json()
         );
         this.app.use(
-        	cors()
+        	cors({credentials: false})
         );
     }
 
