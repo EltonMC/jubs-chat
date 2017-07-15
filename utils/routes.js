@@ -232,17 +232,17 @@ class Routes{
 	            messages.chats = `id cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
-				helper.getChats(userId, (error, result)=>{
-          			if (error) {
-	           			messages.error = true;
-	            		messages.chats = `Server error.`;
+				// helper.getChats(userId, (error, result)=>{
+          		// 	if (error) {
+	           	// 		messages.error = true;
+	            // 		messages.chats = `Server error.`;
 	           			response.status(200).json(messages);
-	           		}else{
-	           			messages.error = false;
-	            		messages.chats = result;
-	           			response.status(200).json(messages);
-	           		}
-				});
+	           	// 	}else{
+	           	// 		messages.error = false;
+	            // 		messages.chats = result;
+	           	// 		response.status(200).json(messages);
+	           	// 	}
+				// });
 	    	}
 		});
 
