@@ -225,21 +225,21 @@ class Routes{
 		this.app.post('/getChats',(request,response) =>{
 
 			let userId = request.body.userId;
-			let messages = {}
+			let chats = {}
 			
 			if (userId == '') {
 				messages.error = true;
-	            messages.message = `id cant be empty.`;
+	            messages.chats = `id cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
 				helper.getChats(userId, (error, result)=>{
           			if (error) {
 	           			messages.error = true;
-	            		messages.message = `Server error.`;
+	            		messages.chats = `Server error.`;
 	           			response.status(200).json(messages);
 	           		}else{
 	           			messages.error = false;
-	            		messages.messages = result;
+	            		messages.chats = result;
 	           			response.status(200).json(messages);
 	           		}
 				});
