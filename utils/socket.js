@@ -131,10 +131,10 @@ class Socket{
 	socketConfig(){
 
 		this.io.use(function(socket, next) {
-			let userID = socket.request._query['userId'];
+			let idUser = socket.request._query['idUser'];
           	let userSocketId = socket.id;
           	const data = {
-          		id : userID,
+          		id : idUser,
           		value : {
           			$set :{
           				socketId : userSocketId,

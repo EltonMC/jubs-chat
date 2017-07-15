@@ -165,7 +165,7 @@ class Helper{
 	*/
 	addSocketId(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').update( { _id : ObjectID(data.id)}, data.value ,(err, result) => {
+			db.collection('users').update( { idUser : data.id}, data.value ,(err, result) => {
 				db.close();
 				callback(err,result.result);
 			});
