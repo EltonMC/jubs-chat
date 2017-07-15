@@ -97,7 +97,8 @@ class Routes{
 			const data = {
 				idClient : (request.body.idClient).toLowerCase(),
 				idPro : (request.body.idPro).toLowerCase(),
-				idService: request.body.idService
+				idService: request.body.idService,
+				id: request.body.id
 			};
 
 			let registrationResponse = {}
