@@ -222,6 +222,35 @@ class Routes{
 	        }
 		});
 
+		this.app.post('/getChats',(request,response) =>{
+
+			let idClient = request.body.idClient;
+			let idPro = request.body.idPro;
+			let messages = {}
+			
+			if (userId == '') {
+				messages.error = true;
+	            messages.message = `userId cant be empty.`;
+	            response.status(200).json(messages);
+			}else{
+
+	           	helper.getChats( idClient, idPro, (error,result)=>{
+
+          			if (error) {
+
+	           			messages.error = true;
+	            		messages.message = `Server error.`;
+	           			response.status(200).json(messages);
+
+	           		}else{
+
+	           			messages.error = false;
+	            		messages.messages = result;
+	           			response.status(200).json(messages);
+	           		}
+				});
+	        }
+		});
 
 		// this.app.get('*',(request,response) =>{
 		// 	response.sendFile(path.join(__dirname,'../dist/index.html'));

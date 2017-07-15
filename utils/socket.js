@@ -24,41 +24,41 @@ class Socket{
 			/**
 			* get the user's Chat list
 			*/
-			socket.on('chat-list', (data) => {
+			// socket.on('chat-list', (data) => {
 
-				let chatListResponse = {};
+			// 	let chatListResponse = {};
 
-				if (data.userId == '') {
+			// 	if (data.userId == '') {
 
-					chatListResponse.error = true;
-					chatListResponse.message = `User does not exits.`;
+			// 		chatListResponse.error = true;
+			// 		chatListResponse.message = `User does not exits.`;
 					
-					this.io.emit('chat-list-response',chatListResponse);
+			// 		this.io.emit('chat-list-response',chatListResponse);
 
-				}else{
+			// 	}else{
 
-					helper.getUserInfo( data.userId,(err, UserInfoResponse)=>{
+			// 		helper.getUserInfo( data.userId,(err, UserInfoResponse)=>{
 						
-						delete UserInfoResponse.password;
+			// 			delete UserInfoResponse.password;
 
-						helper.getChatList( socket.id,(err, response)=>{
+			// 			helper.getChatList( socket.id,(err, response)=>{
 						
-							this.io.to(socket.id).emit('chat-list-response',{
-								error : false ,
-								singleUser : false ,
-								chatList : response
-							});
+			// 				this.io.to(socket.id).emit('chat-list-response',{
+			// 					error : false ,
+			// 					singleUser : false ,
+			// 					chatList : response
+			// 				});
 
-							socket.broadcast.emit('chat-list-response',{
-								error : false ,
-								singleUser : true ,
-								chatList : UserInfoResponse
-							});
+			// 				socket.broadcast.emit('chat-list-response',{
+			// 					error : false ,
+			// 					singleUser : true ,
+			// 					chatList : UserInfoResponse
+			// 				});
 
-						});
-					});
-				}
-		    });
+			// 			});
+			// 		});
+			// 	}
+		    // });
 
 			/**
 			* send the messages to the user

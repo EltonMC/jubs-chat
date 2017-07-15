@@ -167,7 +167,45 @@ class Helper{
 			});
 		});
 	}
+
+	/*
+	* Name of the Method : getChats
+	* Description : To fetch messages from DB between two users.
+	* Parameter : 
+	*		1) userId, toUserId
+	*		2) callback function
+	* Return : callback 
+	*/
+	getChats(idClient, idPro, callback){
  
+		const data = {
+	        '$or' : [
+	        	{ '$and': [
+	        			{
+	        				'idClient': idClient
+	        			},{
+	        				'idPro': idPro
+	        			}
+	        		]
+	        	},{
+	        		'$and': [ 
+	        			{
+	        				'idClient': idPro
+	        			}, {
+	        				'idPro': idClient
+	        			}
+	        		]
+	        	},
+	        ]
+	    };
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('chats').find(data).sort({'timestamp':1}).toArray( (err, result) => {
+			db.close();
+				callback(err,result);
+			});
+		});
+	}
+
 	/*
 	* Name of the Method : getMessages
 	* Description : To fetch messages from DB between two users.
