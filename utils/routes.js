@@ -240,7 +240,7 @@ class Routes{
 	           		}else{
 	           			chats.error = false;
 	            		chats.chat = result;
-	           			response.status(200).json(messages);
+	           			response.status(200).json(chats);
 	           		}
 				});
 	    	}
