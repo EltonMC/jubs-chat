@@ -145,17 +145,17 @@ class Helper{
 	        '$or' : [
 	        	{ '$and': [
 	        			{
-	        				'idClient': userId
+	        				'idClient': idClient
 	        			},{
-	        				'idPro': toUserId
+	        				'idPro': idPro
 	        			}
 	        		]
 	        	},{
 	        		'$and': [ 
 	        			{
-	        				'idPro': toUserId
+	        				'idPro': idPro
 	        			}, {
-	        				'idClient': userId
+	        				'idClient': idClient
 	        			}
 	        		]
 	        	},
