@@ -47,6 +47,23 @@ class Helper{
 	}
  
 	/*
+	* Name of the Method : saveChat
+	* Description : save the chat
+	* Parameter : 
+	*		1) data query object for MongDB
+	*		2) callback function
+	* Return : callback 
+	*/
+	saveChat(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('chats').insertOne(data, (err, result) =>{
+				db.close();
+				callback(err,result);
+			});
+		});
+	}
+ 
+	/*
 	* Name of the Method : registerUser
 	* Description : register the User
 	* Parameter : 
@@ -62,7 +79,7 @@ class Helper{
 			});
 		});
 	}
- 
+
 	/*
 	* Name of the Method : userSessionCheck
 	* Description : to check if user is online or not.
@@ -140,6 +157,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+	
 	insertMessages(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('messages').insertOne(data, (err, result) =>{

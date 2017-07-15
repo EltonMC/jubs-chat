@@ -92,6 +92,32 @@ class Routes{
 	        }
 		});
 
+		this.app.post('/saveChat',(request,response) =>{
+
+			const data = {
+				userId : (request.body.username).toLowerCase(),
+				toUserId : request.body.email,
+				timestamp: Math.floor(new Date() / 1000)
+			};
+
+			let registrationResponse = {}
+			helper.registerUser( data, (error,result)=>{
+
+				if (error) {
+
+					registrationResponse.error = true;
+					registrationResponse.message = `Server error.`;
+					response.status(404).json(registrationResponse);
+				}else{
+
+					registrationResponse.error = false;
+					registrationResponse.userId = result.insertedId;
+					registrationResponse.message = `User registration successful.`;
+					response.status(200).json(registrationResponse);
+				}
+			});
+		});
+
 		this.app.post('/login',(request,response) =>{
 
 			const data = {
