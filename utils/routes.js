@@ -163,7 +163,7 @@ class Routes{
 
 							registrationResponse.error = false;
 							registrationResponse.userId = result.insertedId;
-							registrationResponse.message = `User registration successful.`;
+							registrationResponse.message = `Chat registration successful.`;
 							response.status(200).json(registrationResponse);
 						}
 					});
