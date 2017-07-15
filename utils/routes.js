@@ -246,7 +246,7 @@ class Routes{
 	    //     }
 		// });
 
-		this.app.post('/getMessages',(request,response) =>{
+		this.app.post('/messages',(request,response) =>{
 
 			let idUser = request.body.idUser;
 			let toIdUser = request.body.toIdUser;
@@ -299,22 +299,8 @@ class Routes{
 				});
 	    	}
 		});
-
-		// this.app.get('*',(request,response) =>{
-		// 	response.sendFile(path.join(__dirname,'../dist/index.html'));
-		// });
 		
 		this.app.get('/', function (request, response) {
-			// mongoDb.onConnect(db => {
-			// 	let data = {'user': 'elton'};
-			// 	db.collection('users').insertOne(data, (err, result) =>{
-			// 	});
-			// 	data = {'user': 'elton1'};
-			// 	db.collection('users').find(data).count( (err, result) => {
-			// 		db.close();
-			// 		res.status(200).json(result);
-			// 	});	
-			// });
 			response.send("Server ON!");
 		});
 

@@ -127,14 +127,14 @@ class Helper{
 	* Return : callback 
 	*/
 
-	userSessionCheck(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').findOne( { _id : ObjectID(data.userId) , online : 'Y'}, (err, result) => {
-				db.close();
-				callback(err,result);
-			});
-		});
-	}
+	// userSessionCheck(data,callback){
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
+	// 		db.collection('users').findOne( { _id : ObjectID(data.userId) , online : 'Y'}, (err, result) => {
+	// 			db.close();
+	// 			callback(err,result);
+	// 		});
+	// 	});
+	// }
  
  
 	/*
