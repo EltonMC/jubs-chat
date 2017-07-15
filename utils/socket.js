@@ -96,9 +96,9 @@ class Socket{
 			*/
 			socket.on('logout',(data)=>{
 
-				const userId = data.userId;
+				const idUser = data.userId;
 				
-				helper.logout(userId , false, (error, result)=>{
+				helper.logout(idUser , false, (error, result)=>{
 
 					this.io.to(socket.id).emit('logout-response',{
 						error : false
