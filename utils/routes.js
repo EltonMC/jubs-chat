@@ -224,26 +224,26 @@ class Routes{
 
 		this.app.post('/getChats',(request,response) =>{
 
-			// let userId = request.body.userId;
-			// let chats = {}
+			let userId = request.body.userId;
+			let chats = {}
 			
-			// if (userId == '') {
-			// 	messages.error = true;
-	        //     messages.chats = `id cant be empty.`;
-	        //     response.status(200).json(messages);
-			// }else{
-			// 	helper.getChats(userId, (error, result)=>{
-          	// 		if (error) {
-	        //    			messages.error = true;
-	        //     		messages.chats = `Server error.`;
+			if (userId == '') {
+				chats.error = true;
+	            chats.chat = `id cant be empty.`;
+	            response.status(200).json(chats);
+			}else{
+				helper.getChats(userId, (error, result)=>{
+          			if (error) {
+	           			chats.error = true;
+	            		chats.chat = `Server error.`;
+	           			response.status(200).json(chats);
+	           		}else{
+	           			chats.error = false;
+	            		chats.chat = result;
 	           			response.status(200).json(messages);
-	        //    		}else{
-	        //    			messages.error = false;
-	        //     		messages.chats = result;
-	        //    			response.status(200).json(messages);
-	        //    		}
-			// 	});
-	    	// }
+	           		}
+				});
+	    	}
 		});
 
 		// this.app.get('*',(request,response) =>{
