@@ -97,11 +97,11 @@ class Routes{
 			const data = {
 				userId : (request.body.userId).toLowerCase(),
 				toUserId : (request.body.toUserId).toLowerCase(),
-				timestamp: Math.floor(new Date() / 1000)
 			};
 
 			let registrationResponse = {}
-			helper.saveUser( data, (error,result)=>{
+		 	data.timestamp = Math.floor(new Date() / 1000);
+			helper.saveChat( data, (error,result)=>{
 
 				if (error) {
 
