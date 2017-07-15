@@ -276,7 +276,7 @@ class Routes{
 	        }
 		});
 
-		this.app.post('/chat/:id',(request,response) =>{
+		this.app.get('/chat/:id',(request,response) =>{
 			res.end(req.params.id);
 			// let idUser = request.body.idUser;
 			// let chats = {}
