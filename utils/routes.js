@@ -277,27 +277,27 @@ class Routes{
 		});
 
 		this.app.get('/chats/:id',(request, response) =>{
-			response.end(request.params.id);
-			// let idUser = request.body.idUser;
-			// let chats = {}
+
+			let idUser = request.params.id;
+			let chats = {}
 			
-			// if (userId == '') {
-			// 	chats.error = true;
-	        //     chats.chat = `id cant be empty.`;
-	        //     response.status(200).json(chats);
-			// }else{
-			// 	helper.getChats(idUser, (error, result)=>{
-          	// 		if (error) {
-	        //    			chats.error = true;
-	        //     		chats.chat = `Server error.`;
-	        //    			response.status(200).json(chats);
-	        //    		}else{
-	        //    			chats.error = false;
-	        //     		chats.chat = result;
-	        //    			response.status(200).json(chats);
-	        //    		}
-			// 	});
-	    	// }
+			if (userId == '') {
+				chats.error = true;
+	            chats.chat = `id cant be empty.`;
+	            response.status(200).json(chats);
+			}else{
+				helper.getChats(idUser, (error, result)=>{
+          			if (error) {
+	           			chats.error = true;
+	            		chats.chat = `Server error.`;
+	           			response.status(200).json(chats);
+	           		}else{
+	           			chats.error = false;
+	            		chats.chat = result;
+	           			response.status(200).json(chats);
+	           		}
+				});
+	    	}
 		});
 
 		// this.app.get('*',(request,response) =>{
