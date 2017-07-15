@@ -28,7 +28,25 @@ class Helper{
 			});
 		});
 	}
- 
+	/*
+	* Name of the Method : userNameCheck
+	* Description : To check if username is available or not.
+	* Parameter : 
+	*		1) data query object for MongDB
+	*		2) callback function
+	* Return : callback 
+	*/
+
+	userCheck(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('users').find(data).count( (err, result) => {
+				db.close();
+				callback(result);
+			});
+		});
+	}
+	
+
 	/*
 	* Name of the Method : login
 	* Description : login the user.
