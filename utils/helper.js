@@ -74,14 +74,14 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	login(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').findAndModify( data ,[], {$set: {'online': 'Y'}},{},(err, result) => {
-				db.close();
-				callback(err,result.value);
-			});
-		});
-	}
+	// login(data,callback){
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
+	// 		db.collection('users').findAndModify( data ,[], {$set: {'online': 'Y'}},{},(err, result) => {
+	// 			db.close();
+	// 			callback(err,result.value);
+	// 		});
+	// 	});
+	// }
  
 	/*
 	* Name of the Method : saveChat
@@ -91,6 +91,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+
 	saveChat(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('chats').insertOne(data, (err, result) =>{
@@ -108,14 +109,14 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	registerUser(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').insertOne(data, (err, result) =>{
-				db.close();
-				callback(err,result);
-			});
-		});
-	}
+	// registerUser(data,callback){
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
+	// 		db.collection('users').insertOne(data, (err, result) =>{
+	// 			db.close();
+	// 			callback(err,result);
+	// 		});
+	// 	});
+	// }
 
 	/*
 	* Name of the Method : userSessionCheck
@@ -125,6 +126,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+
 	userSessionCheck(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('users').findOne( { _id : ObjectID(data.userId) , online : 'Y'}, (err, result) => {
@@ -143,6 +145,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+
 	getUserInfo(userId,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('users').findOne( { _id : ObjectID(userId)}, (err, result) => {
@@ -177,15 +180,15 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	getChatList(userId, callback){
 
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').find({socketId : { $ne : userId }}).toArray( (err, result) => {
-			db.close();
-				callback(err,result);
-			});
-		});
-	}
+	// getChatList(userId, callback){
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
+	// 		db.collection('users').find({socketId : { $ne : userId }}).toArray( (err, result) => {
+	// 		db.close();
+	// 			callback(err,result);
+	// 		});
+	// 	});
+	// }
  
 	/*
 	* Name of the Method : insertMessages
@@ -213,6 +216,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+
 	getChats(userId, callback){
  		const data = {
 	        '$or' : [
@@ -239,23 +243,23 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	getMessages(userId, toUserId, callback){
+	getMessages(idUser, toUserId, callback){
  
 		const data = {
 	        '$or' : [
 	        	{ '$and': [
 	        			{
-	        				'toUserId': userId
+	        				'toIdUser': idUser
 	        			},{
-	        				'fromUserId': toUserId
+	        				'fromIdUser': toIdUser
 	        			}
 	        		]
 	        	},{
 	        		'$and': [ 
 	        			{
-	        				'toUserId': toUserId
+	        				'toIdUser': toUserId
 	        			}, {
-	        				'fromUserId': userId
+	        				'fromIdUser': idUser
 	        			}
 	        		]
 	        	},
@@ -277,29 +281,29 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	logout(userID,isSocketId,callback){
+	// logout(userID,isSocketId,callback){
 		
-		const data = {
-  			$set :{
-  				online : 'N'
-  			}
-  		};
-		this.Mongodb.onConnect( (db,ObjectID) => {
+	// 	const data = {
+  	// 		$set :{
+  	// 			online : 'N'
+  	// 		}
+  	// 	};
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
 			
-			let condition = {};
-			if (isSocketId) {
-				condition.socketId = userID;
-			}else{
-				condition._id = ObjectID(userID);
-			}
+	// 		let condition = {};
+	// 		if (isSocketId) {
+	// 			condition.socketId = userID;
+	// 		}else{
+	// 			condition._id = ObjectID(userID);
+	// 		}
  
  
-			db.collection('users').update( condition, data ,(err, result) => {
-				db.close();
-				callback(err,result.result);
-			});
-		});
-	}
+	// 		db.collection('users').update( condition, data ,(err, result) => {
+	// 			db.close();
+	// 			callback(err,result.result);
+	// 		});
+	// 	});
+	// }
 }
  
 module.exports = new Helper();

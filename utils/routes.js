@@ -248,8 +248,8 @@ class Routes{
 
 		this.app.post('/getMessages',(request,response) =>{
 
-			let userId = request.body.userId;
-			let toUserId = request.body.toUserId;
+			let idUser = request.body.idUser;
+			let toIdUser = request.body.toIdUser;
 			let messages = {}
 			
 			if (userId == '') {

@@ -91,38 +91,38 @@ class Socket{
 		    });
 
 
-			/**
-			* Logout the user
-			*/
-			socket.on('logout',(data)=>{
+			// /**
+			// * Logout the user
+			// */
+			// socket.on('logout',(data)=>{
 
-				const userId = data.userId;
+			// 	const userId = data.userId;
 				
-				helper.logout(userId , false, (error, result)=>{
+			// 	helper.logout(userId , false, (error, result)=>{
 
-					this.io.to(socket.id).emit('logout-response',{
-						error : false
-					});
+			// 		this.io.to(socket.id).emit('logout-response',{
+			// 			error : false
+			// 		});
 
-					socket.broadcast.emit('chat-list-response',{
-						error : false ,
-						userDisconnected : true ,
-						socketId : socket.id
-					});
-				});	
-		    });
+			// 		socket.broadcast.emit('chat-list-response',{
+			// 			error : false ,
+			// 			userDisconnected : true ,
+			// 			socketId : socket.id
+			// 		});
+			// 	});	
+		    // });
 
 
-			/**
-			* sending the disconnected user to all socket users. 
-			*/
-			socket.on('disconnect',()=>{
-				socket.broadcast.emit('chat-list-response',{
-					error : false ,
-					userDisconnected : true ,
-					socketId : socket.id
-				});
-		    });
+			// /**
+			// * sending the disconnected user to all socket users. 
+			// */
+			// socket.on('disconnect',()=>{
+			// 	socket.broadcast.emit('chat-list-response',{
+			// 		error : false ,
+			// 		userDisconnected : true ,
+			// 		socketId : socket.id
+			// 	});
+		    // });
 
 		});
 
