@@ -224,16 +224,15 @@ class Routes{
 
 		this.app.post('/getChats',(request,response) =>{
 
-			let idClient = request.body.idClient;
-			let idPro = request.body.idPro;
+			let userId = request.body.userId;
 			let messages = {}
 			
-			if (idClient == '' || idPro == '') {
+			if (userId == '') {
 				messages.error = true;
 	            messages.message = `id cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
-				helper.getChats(idClient, idPro, (error,result)=>{
+				helper.getChats(userId, (error,result)=>{
           			if (error) {
 	           			messages.error = true;
 	            		messages.message = `Server error.`;

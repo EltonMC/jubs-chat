@@ -176,22 +176,18 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	getChats(idClient, idPro, callback){
+	getChats(userId, callback){
  		const data = {
 	        '$or' : [
 	        	{ '$and': [
 	        			{
-	        				'idClient': idClient
-	        			},{
-	        				'idPro': idPro
+	        				'idClient': userId
 	        			}
 	        		]
 	        	},{
 	        		'$and': [ 
 	        			{
-	        				'idClient': idPro
-	        			}, {
-	        				'idPro': idClient
+	        				'idPro': userId
 	        			}
 	        		]
 	        	},
