@@ -249,7 +249,7 @@ class Routes{
 	        //    			response.status(200).json(messages);
 	        //    		}
 			// 	});
-	        // }
+	    	}
 		});
 
 		// this.app.get('*',(request,response) =>{
