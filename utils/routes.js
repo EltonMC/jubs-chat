@@ -233,22 +233,21 @@ class Routes{
 	            messages.message = `id cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
+				helper.getChats( idClient, idPro, (error,result)=>{
 
-	        //    	helper.getChats( idClient, idPro, (error,result)=>{
+          			if (error) {
 
-          	// 		if (error) {
+	           			messages.error = true;
+	            		messages.message = `Server error.`;
+	           			response.status(200).json(messages);
 
-	        //    			messages.error = true;
-	        //     		messages.message = `Server error.`;
-	        //    			response.status(200).json(messages);
+	           		}else{
 
-	        //    		}else{
-
-	        //    			messages.error = false;
-	        //     		messages.messages = result;
-	        //    			response.status(200).json(messages);
-	        //    		}
-			// 	});
+	           			messages.error = false;
+	            		messages.messages = result;
+	           			response.status(200).json(messages);
+	           		}
+				});
 	    	}
 		});
 
