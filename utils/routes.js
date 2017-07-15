@@ -281,7 +281,7 @@ class Routes{
 			let idUser = request.params.id;
 			let chats = {}
 			
-			if (userId == '') {
+			if (idUser == '') {
 				chats.error = true;
 	            chats.chat = `id cant be empty.`;
 	            response.status(200).json(chats);
