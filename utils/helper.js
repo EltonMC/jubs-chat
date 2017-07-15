@@ -296,8 +296,7 @@ class Helper{
 			}else{
 				condition._id = ObjectID(userID);
 			}
- 
- 
+  
 			db.collection('users').update( condition, data ,(err, result) => {
 				db.close();
 				callback(err,result.result);

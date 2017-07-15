@@ -140,6 +140,7 @@ class Routes{
 				idClient : (request.body.idClient).toLowerCase(),
 				idPro : (request.body.idPro).toLowerCase(),
 				idService: request.body.idService,
+				title: request.body.title,
 				status: 'open'
 			};
 
