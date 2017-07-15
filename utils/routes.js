@@ -276,8 +276,8 @@ class Routes{
 	        }
 		});
 
-		this.app.get('/chat/:id',(request,response) =>{
-			res.end(req.params.id);
+		this.app.get('/chats/:id',(request, response) =>{
+			response.end(request.params.id);
 			// let idUser = request.body.idUser;
 			// let chats = {}
 			
@@ -304,7 +304,7 @@ class Routes{
 		// 	response.sendFile(path.join(__dirname,'../dist/index.html'));
 		// });
 		
-		this.app.get('/', function (req, res) {
+		this.app.get('/', function (request, response) {
 			// mongoDb.onConnect(db => {
 			// 	let data = {'user': 'elton'};
 			// 	db.collection('users').insertOne(data, (err, result) =>{
@@ -315,7 +315,7 @@ class Routes{
 			// 		res.status(200).json(result);
 			// 	});	
 			// });
-			res.send("Server ON!");
+			response.send("Server ON!");
 		});
 
 	}
