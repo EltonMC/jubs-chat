@@ -25,31 +25,19 @@ class Socket{
 			* get the user's Chat list
 			*/
 			socket.on('chat-list', (data) => {
-
 				let chatListResponse = {};
-
-				if (data.idClient == '') {
-
-					chatListResponse.error = true;
-					chatListResponse.message = `User does not exits.`;
-					
-					this.io.emit('chat-list-response',chatListResponse);
-
-				}else{
-					helper.getChatList(data ,(err, response)=>{
-					    this.io.to(socket.id).emit('chat-list-response',{
-							error : false ,
-							singleUser : false ,
-							chatList : response
-						});
-						socket.broadcast.emit('chat-list-response',{
-							error : false ,
-							singleUser : true ,
-							chatList : UserInfoResponse
-						});
-
+				helper.getChatList(data ,(err, response)=>{
+					this.io.to(socket.id).emit('chat-list-response',{
+						error : false ,
+						singleUser : false ,
+						chatList : response
 					});
-				}
+					socket.broadcast.emit('chat-list-response',{
+						error : false ,
+						singleUser : true ,
+						chatList : UserInfoResponse
+					});
+				});
 		    });
 
 			/**
