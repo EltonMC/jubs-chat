@@ -95,8 +95,9 @@ class Routes{
 		this.app.post('/saveChat',(request,response) =>{
 
 			const data = {
-				userId : (request.body.userId).toLowerCase(),
-				toUserId : (request.body.toUserId).toLowerCase(),
+				idClient : (request.body.idClient).toLowerCase(),
+				idPro : (request.body.idPro).toLowerCase(),
+				idService: request.body.idService
 			};
 
 			let registrationResponse = {}

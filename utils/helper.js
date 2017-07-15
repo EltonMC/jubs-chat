@@ -141,8 +141,28 @@ class Helper{
 	* Return : callback 
 	*/
 	getChatList(userId, callback){
+		const data = {
+	        '$or' : [
+	        	{ '$and': [
+	        			{
+	        				'idClient': userId
+	        			},{
+	        				'idPro': toUserId
+	        			}
+	        		]
+	        	},{
+	        		'$and': [ 
+	        			{
+	        				'idPro': toUserId
+	        			}, {
+	        				'idClient': userId
+	        			}
+	        		]
+	        	},
+	        ]
+	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').find({socketId : { $ne : userId }}).toArray( (err, result) => {
+			db.collection('chats').find(data).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
