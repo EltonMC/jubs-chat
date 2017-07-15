@@ -20,17 +20,18 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	userNameCheck(data,callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').find(data).count( (err, result) => {
-				db.close();
-				callback(result);
-			});
-		});
-	}
+	// userNameCheck(data,callback){
+	// 	this.Mongodb.onConnect( (db,ObjectID) => {
+	// 		db.collection('users').find(data).count( (err, result) => {
+	// 			db.close();
+	// 			callback(result);
+	// 		});
+	// 	});
+	// }
+
 	/*
-	* Name of the Method : userNameCheck
-	* Description : To check if username is available or not.
+	* Name of the Method : userCheck
+	* Description : To check if id is available or not.
 	* Parameter : 
 	*		1) data query object for MongDB
 	*		2) callback function
@@ -46,6 +47,24 @@ class Helper{
 		});
 	}
 	
+
+	/*
+	* Name of the Method : chatCheck
+	* Description : To check if chat is available or not.
+	* Parameter : 
+	*		1) data query object for MongDB
+	*		2) callback function
+	* Return : callback 
+	*/
+
+	chatCheck(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('chats').find(data).count( (err, result) => {
+				db.close();
+				callback(result);
+			});
+		});
+	}
 
 	/*
 	* Name of the Method : login

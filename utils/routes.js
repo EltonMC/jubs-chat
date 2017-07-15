@@ -17,28 +17,28 @@ class Routes{
 
 	/* creating app Routes starts */
 	appRoutes(){
-		this.app.post('/usernameCheck', function (request, response) {
-			if (request.body.username === "") {
-				response.status(412).json({
-					error : true,
-					message : `username cant be empty.`
-				});
-			} else {
-				helper.userNameCheck( {
-					username : request.body.username.toLowerCase()
-				}, (count) =>{
+	// 	this.app.post('/usernameCheck', function (request, response) {
+	// 		if (request.body.username === "") {
+	// 			response.status(412).json({
+	// 				error : true,
+	// 				message : `username cant be empty.`
+	// 			});
+	// 		} else {
+	// 			helper.userNameCheck( {
+	// 				username : request.body.username.toLowerCase()
+	// 			}, (count) =>{
 
-					let result = {};
+	// 				let result = {};
 					
-					if (count > 0) {
-						result.error = true;
-					} else {
-						result.error = false;
-					}
-					response.status(200).json(result);
-				});
-			}
-		});
+	// 				if (count > 0) {
+	// 					result.error = true;
+	// 				} else {
+	// 					result.error = false;
+	// 				}
+	// 				response.status(200).json(result);
+	// 			});
+	// 		}
+	// 	});
 
 
 		this.app.post('/user', (request, response) => {
@@ -81,158 +81,170 @@ class Routes{
 				});
 			}
 		});
-		this.app.post('/registerUser',(request,response) =>{
 
-			const data = {
-				username : (request.body.username).toLowerCase(),
-				email : request.body.email,
-				password : request.body.password
-			};
+		// this.app.post('/registerUser',(request,response) =>{
 
-			let registrationResponse = {}
+		// 	const data = {
+		// 		username : (request.body.username).toLowerCase(),
+		// 		email : request.body.email,
+		// 		password : request.body.password
+		// 	};
 
-			if(data.username === '') {
+		// 	let registrationResponse = {}
 
-	            registrationResponse.error = true;
-	            registrationResponse.message = `username cant be empty.`;
-	            response.status(412).json(registrationResponse);
+		// 	if(data.username === '') {
 
-	        }else if(data.email === ''){
+	    //         registrationResponse.error = true;
+	    //         registrationResponse.message = `username cant be empty.`;
+	    //         response.status(412).json(registrationResponse);
+
+	    //     }else if(data.email === ''){
 				            
-	            registrationResponse.error = true;
-	            registrationResponse.message = `email cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	    //         registrationResponse.error = true;
+	    //         registrationResponse.message = `email cant be empty.`;
+	    //         response.status(412).json(registrationResponse);
 
-	        }else if(data.password === ''){
+	    //     }else if(data.password === ''){
 				            
-	            registrationResponse.error = true;
-	            registrationResponse.message = `password cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	    //         registrationResponse.error = true;
+	    //         registrationResponse.message = `password cant be empty.`;
+	    //         response.status(412).json(registrationResponse);
 
-	        }else{
+	    //     }else{
 	        	
-	        	data.timestamp = Math.floor(new Date() / 1000);
-				data.online = 'Y' ;
-				data.socketId = '' ;
+	    //     	data.timestamp = Math.floor(new Date() / 1000);
+		// 		data.online = 'Y' ;
+		// 		data.socketId = '' ;
 
-	           	helper.registerUser( data, (error,result)=>{
+	    //        	helper.registerUser( data, (error,result)=>{
 
-	           		if (error) {
+	    //        		if (error) {
 
-           				registrationResponse.error = true;
-	            		registrationResponse.message = `Server error.`;
-	           			response.status(404).json(registrationResponse);
-	           		}else{
+        //    				registrationResponse.error = true;
+	    //         		registrationResponse.message = `Server error.`;
+	    //        			response.status(404).json(registrationResponse);
+	    //        		}else{
 
-	           			registrationResponse.error = false;
-	           			registrationResponse.userId = result.insertedId;
-	            		registrationResponse.message = `User registration successful.`;
-	           			response.status(200).json(registrationResponse);
-	           		}
-				});
-	        }
-		});
+	    //        			registrationResponse.error = false;
+	    //        			registrationResponse.userId = result.insertedId;
+	    //         		registrationResponse.message = `User registration successful.`;
+	    //        			response.status(200).json(registrationResponse);
+	    //        		}
+		// 		});
+	    //     }
+		// });
 
-		this.app.post('/saveChat',(request,response) =>{
+		this.app.post('/chat',(request,response) =>{
 
 			const data = {
 				idClient : (request.body.idClient).toLowerCase(),
 				idPro : (request.body.idPro).toLowerCase(),
 				idService: request.body.idService,
-				id: request.body.id
+				status: 'open'
 			};
 
 			let registrationResponse = {}
 		 	data.timestamp = Math.floor(new Date() / 1000);
-			helper.saveChat( data, (error,result)=>{
 
-				if (error) {
+			helper.userCheck({idUser: data.idUser}, (count) =>{
+				let result = {};
 
+				if (count > 0) {
 					registrationResponse.error = true;
-					registrationResponse.message = `Server error.`;
-					response.status(404).json(registrationResponse);
-				}else{
-
-					registrationResponse.error = false;
-					registrationResponse.userId = result.insertedId;
-					registrationResponse.message = `User registration successful.`;
+					registrationResponse.message = `chat open`;
 					response.status(200).json(registrationResponse);
+				} else {
+					 helper.saveChat( data, (error,result)=>{
+						if (error) {
+							registrationResponse.error = true;
+							registrationResponse.message = `Server error.`;
+							response.status(404).json(registrationResponse);
+						}else{
+
+							registrationResponse.error = false;
+							registrationResponse.userId = result.insertedId;
+							registrationResponse.message = `User registration successful.`;
+							response.status(200).json(registrationResponse);
+						}
+					});
 				}
 			});
-		});
 
-		this.app.post('/login',(request,response) =>{
-
-			const data = {
-				username : (request.body.username).toLowerCase(),
-				password : request.body.password
-			};
-
-			let loginResponse = {}
-
-			if(data.username === '' || data.username === null) {
-
-	            loginResponse.error = true;
-	            loginResponse.message = `username cant be empty.`;
-	            response.status(412).json(loginResponse);
-
-	        }else if(data.password === '' || data.password === null){
-				            
-	            loginResponse.error = true;
-	            loginResponse.message = `password cant be empty.`;
-	            response.status(412).json(loginResponse);
-
-	        }else{
-
-	           	helper.login( data, (error,result)=>{
-
-	           		if (error || result === null) {
-
-	           			loginResponse.error = true;
-	            		loginResponse.message = `Server error.`;
-	           			response.status(404).json(loginResponse);
-	           		}else{
-	           			loginResponse.error = false;
-	           			loginResponse.userId = result._id;
-	            		loginResponse.message = `User logged in.`;
-	           			response.status(200).json(loginResponse);
-	           		}
-				});
-	        }
-		});
-
-		this.app.post('/userSessionCheck',(request,response) =>{
-
-			let userId = request.body.userId;
-			let sessionCheckResponse = {}
 			
-			if (userId == '') {
-
-				sessionCheckResponse.error = true;
-	            sessionCheckResponse.message = `User Id cant be empty.`;
-	            response.status(412).json(sessionCheckResponse);
-
-			}else{
-
-	           	helper.userSessionCheck( { 
-	           		userId : userId,
-	           	}, (error,result)=>{
-	           		
-	           		if (error || result === null) {
-
-	           			sessionCheckResponse.error = true;
-	            		sessionCheckResponse.message = `Server error.`;
-	           			response.status(503).json(sessionCheckResponse);
-	           		}else{
-
-	           			sessionCheckResponse.error = false;
-	           			sessionCheckResponse.username = result.username;
-	            		sessionCheckResponse.message = `User logged in.`;
-	           			response.status(200).json(sessionCheckResponse);
-	           		}
-				});
-	        }
 		});
+
+		// this.app.post('/login',(request,response) =>{
+
+		// 	const data = {
+		// 		username : (request.body.username).toLowerCase(),
+		// 		password : request.body.password
+		// 	};
+
+		// 	let loginResponse = {}
+
+		// 	if(data.username === '' || data.username === null) {
+
+	    //         loginResponse.error = true;
+	    //         loginResponse.message = `username cant be empty.`;
+	    //         response.status(412).json(loginResponse);
+
+	    //     }else if(data.password === '' || data.password === null){
+				            
+	    //         loginResponse.error = true;
+	    //         loginResponse.message = `password cant be empty.`;
+	    //         response.status(412).json(loginResponse);
+
+	    //     }else{
+
+	    //        	helper.login( data, (error,result)=>{
+
+	    //        		if (error || result === null) {
+
+	    //        			loginResponse.error = true;
+	    //         		loginResponse.message = `Server error.`;
+	    //        			response.status(404).json(loginResponse);
+	    //        		}else{
+	    //        			loginResponse.error = false;
+	    //        			loginResponse.userId = result._id;
+	    //         		loginResponse.message = `User logged in.`;
+	    //        			response.status(200).json(loginResponse);
+	    //        		}
+		// 		});
+	    //     }
+		// });
+
+		// this.app.post('/userSessionCheck',(request,response) =>{
+
+		// 	let userId = request.body.userId;
+		// 	let sessionCheckResponse = {}
+			
+		// 	if (userId == '') {
+
+		// 		sessionCheckResponse.error = true;
+	    //         sessionCheckResponse.message = `User Id cant be empty.`;
+	    //         response.status(412).json(sessionCheckResponse);
+
+		// 	}else{
+
+	    //        	helper.userSessionCheck( { 
+	    //        		userId : userId,
+	    //        	}, (error,result)=>{
+	           		
+	    //        		if (error || result === null) {
+
+	    //        			sessionCheckResponse.error = true;
+	    //         		sessionCheckResponse.message = `Server error.`;
+	    //        			response.status(503).json(sessionCheckResponse);
+	    //        		}else{
+
+	    //        			sessionCheckResponse.error = false;
+	    //        			sessionCheckResponse.username = result.username;
+	    //         		sessionCheckResponse.message = `User logged in.`;
+	    //        			response.status(200).json(sessionCheckResponse);
+	    //        		}
+		// 		});
+	    //     }
+		// });
 
 		this.app.post('/getMessages',(request,response) =>{
 
