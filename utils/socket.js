@@ -28,7 +28,7 @@ class Socket{
 
 				let chatListResponse = {};
 
-				if (data.userId == '') {
+				if (data.idClient == '') {
 
 					chatListResponse.error = true;
 					chatListResponse.message = `User does not exits.`;
@@ -36,26 +36,18 @@ class Socket{
 					this.io.emit('chat-list-response',chatListResponse);
 
 				}else{
-
-					helper.getUserInfo( data.userId,(err, UserInfoResponse)=>{
-						
-						delete UserInfoResponse.password;
-
-						helper.getChatList( socket.id,(err, response)=>{
-						
-							this.io.to(socket.id).emit('chat-list-response',{
-								error : false ,
-								singleUser : false ,
-								chatList : response
-							});
-
-							socket.broadcast.emit('chat-list-response',{
-								error : false ,
-								singleUser : true ,
-								chatList : UserInfoResponse
-							});
-
+					helper.getChatList(data ,(err, response)=>{
+					    this.io.to(socket.id).emit('chat-list-response',{
+							error : false ,
+							singleUser : false ,
+							chatList : response
 						});
+						socket.broadcast.emit('chat-list-response',{
+							error : false ,
+							singleUser : true ,
+							chatList : UserInfoResponse
+						});
+
 					});
 				}
 		    });
