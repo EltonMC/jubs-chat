@@ -177,8 +177,7 @@ class Helper{
 	* Return : callback 
 	*/
 	getChats(idClient, idPro, callback){
- 
-		const data = {
+ 		const data = {
 	        '$or' : [
 	        	{ '$and': [
 	        			{
@@ -199,7 +198,7 @@ class Helper{
 	        ]
 	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').find({idClient: idClient}).toArray( (err, result) => {
+			db.collection('chats').find(data).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
