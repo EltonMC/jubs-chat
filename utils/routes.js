@@ -228,28 +228,28 @@ class Routes{
 			let idPro = request.body.idPro;
 			let messages = {}
 			
-			if (userId == '') {
+			if (idClient == '' || idPro == '') {
 				messages.error = true;
-	            messages.message = `userId cant be empty.`;
+	            messages.message = `id cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
 
-	           	helper.getChats( idClient, idPro, (error,result)=>{
+	        //    	helper.getChats( idClient, idPro, (error,result)=>{
 
-          			if (error) {
+          	// 		if (error) {
 
-	           			messages.error = true;
-	            		messages.message = `Server error.`;
-	           			response.status(200).json(messages);
+	        //    			messages.error = true;
+	        //     		messages.message = `Server error.`;
+	        //    			response.status(200).json(messages);
 
-	           		}else{
+	        //    		}else{
 
-	           			messages.error = false;
-	            		messages.messages = result;
-	           			response.status(200).json(messages);
-	           		}
-				});
-	        }
+	        //    			messages.error = false;
+	        //     		messages.messages = result;
+	        //    			response.status(200).json(messages);
+	        //    		}
+			// 	});
+	        // }
 		});
 
 		// this.app.get('*',(request,response) =>{
