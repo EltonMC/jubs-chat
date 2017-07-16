@@ -93,6 +93,7 @@ class Routes{
 			helper.chatCheck({idService: data.idService}, (err, result) =>{
 				if (result) {
 					registrationResponse.error = true;
+					registrationResponse.chat = result;
 					registrationResponse.message = `chat open`;
 					response.status(200).json(registrationResponse);
 				} else {
