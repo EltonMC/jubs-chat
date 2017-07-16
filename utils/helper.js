@@ -36,7 +36,7 @@ class Helper{
 
 	chatCheck(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').findOne(data, ( (err, result) => {
+			db.collection('chats').findOne(data, (err, result) => {
 				db.close();
 				callback(result);
 			});
