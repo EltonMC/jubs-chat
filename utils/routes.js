@@ -94,7 +94,6 @@ class Routes{
 				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.chat = result;
-					registrationResponse.message = `chat open`;
 					response.status(200).json(registrationResponse);
 				} else {
 					 helper.saveChat( data, (error, result)=>{
@@ -103,10 +102,9 @@ class Routes{
 							registrationResponse.message = `Server error.`;
 							response.status(404).json(registrationResponse);
 						}else{
-
 							registrationResponse.error = false;
-							registrationResponse.userId = result.insertedId;
-							registrationResponse.message = `Chat registration successful.`;
+							data.idChat = result.insertedId;
+							registrationResponse.chat = data;
 							response.status(200).json(registrationResponse);
 						}
 					});
