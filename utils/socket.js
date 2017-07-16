@@ -1,9 +1,3 @@
-/*
-* Real time private chatting app using Angular 2, Nodejs, mongodb and Socket.io
-* @author Shashank Tiwari
-*/
-
-
 'use strict';
 
 const path = require('path');
@@ -21,45 +15,7 @@ class Socket{
 
 		this.io.on('connection', (socket) => {
 
-			/**
-			* get the user's Chat list
-			*/
-			// socket.on('chat-list', (data) => {
-
-			// 	let chatListResponse = {};
-
-			// 	if (data.userId == '') {
-
-			// 		chatListResponse.error = true;
-			// 		chatListResponse.message = `User does not exits.`;
-					
-			// 		this.io.emit('chat-list-response',chatListResponse);
-
-			// 	}else{
-
-			// 		helper.getUserInfo( data.userId,(err, UserInfoResponse)=>{
-						
-			// 			delete UserInfoResponse.password;
-
-			// 			helper.getChatList( socket.id,(err, response)=>{
-						
-			// 				this.io.to(socket.id).emit('chat-list-response',{
-			// 					error : false ,
-			// 					singleUser : false ,
-			// 					chatList : response
-			// 				});
-
-			// 				socket.broadcast.emit('chat-list-response',{
-			// 					error : false ,
-			// 					singleUser : true ,
-			// 					chatList : UserInfoResponse
-			// 				});
-
-			// 			});
-			// 		});
-			// 	}
-		    // });
-
+		
 			/**
 			* send the messages to the user
 			*/
@@ -108,18 +64,6 @@ class Socket{
 					});
 				});	
 		    });
-
-
-			// /**
-			// * sending the disconnected user to all socket users. 
-			// */
-			// socket.on('disconnect',()=>{
-			// 	socket.broadcast.emit('chat-list-response',{
-			// 		error : false ,
-			// 		userDisconnected : true ,
-			// 		socketId : socket.id
-			// 	});
-		    // });
 
 		});
 
