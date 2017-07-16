@@ -269,8 +269,8 @@ class Routes{
 
 	           		}else{
 
-	           			messages.error = false;
-	            		messages.messages = result;
+						messages.error = false;								  
+						messages.messages = result;
 	           			response.status(200).json(messages);
 	           		}
 				});
@@ -293,8 +293,8 @@ class Routes{
 	            		chats.chat = `Server error.`;
 	           			response.status(200).json(chats);
 	           		}else{
-	           			chats.error = false;
-	            		chats.chat = result;
+					    chats.error = false;											  
+	            		chats.chat = result._id;
 	           			response.status(200).json(chats);
 	           		}
 				});
