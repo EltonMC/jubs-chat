@@ -15,7 +15,7 @@ class Server{
 
     constructor(){
         this.port =  process.env.PORT || 1337;
-        this.host = `chat-jubs.azurewebsites.net/api/v1`;
+        this.host = `chat-jubs.azurewebsites.net`;
         
         this.app = express();
         this.http = http.Server(this.app);
