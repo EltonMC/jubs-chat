@@ -38,7 +38,7 @@ class Helper{
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('chats').findOne(data, (err, result) => {
 				db.close();
-				callback(result);
+				callback(err, result);
 			});
 		});
 	}
