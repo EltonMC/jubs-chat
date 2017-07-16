@@ -146,7 +146,7 @@ class Routes{
 			let registrationResponse = {}
 		 	data.timestamp = Math.floor(new Date() / 1000);
 
-			helper.userCheck({idService: data.idService}, (count) =>{
+			helper.chatCheck({idService: data.idService}, (count) =>{
 				let result = {};
 
 				if (count > 0) {
