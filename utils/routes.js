@@ -73,7 +73,7 @@ class Routes{
 			// 				}else{
 			// 					registrationResponse.error = false;
 			// 					registrationResponse.message = `User registration successful.`;
-								response.status(200).json(registrationResponse);
+								response.status(200).json();
 			// 				}
 			// 			});					
 			// 		}
