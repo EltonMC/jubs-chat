@@ -169,10 +169,7 @@ class Routes{
 		});
 		
 		this.app.get('/', function (request, response) {
-			helper.getUserSocket("1179795758780631", (error, result) => {
-				response.status(200).json(result[0].idSocket);
-			})
-//			response.send("Server ON!");
+			response.send("Server ON!");
 		});
 	}
 
