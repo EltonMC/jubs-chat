@@ -246,7 +246,7 @@ class Routes{
 	    //     }
 		// });
 
-		this.app.post('/messages/:id',(request,response) =>{
+		this.app.get('/messages/:id',(request,response) =>{
 
 			let idChat = request.params.id;
 			
