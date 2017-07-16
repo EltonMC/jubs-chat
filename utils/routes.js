@@ -81,7 +81,7 @@ class Routes{
 			}
 		});
 
-		this.app.get('/user/:id',(request, response) => {
+		this.app.get('/users/:id',(request, response) => {
 
 			let idUser = request.params.id;
 			let user = {}
