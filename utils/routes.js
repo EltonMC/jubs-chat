@@ -90,14 +90,14 @@ class Routes{
 			let registrationResponse = {}
 		 	data.timestamp = Math.floor(new Date() / 1000);
 
-			helper.chatCheck({idService: data.idService}, (result) =>{
+			helper.chatCheck({idService: data.idService}, (err, result) =>{
 				let result = {};
 				if (result.idService == data.idService) {
 					registrationResponse.error = true;
 					registrationResponse.message = `chat open`;
 					response.status(200).json(registrationResponse);
 				} else {
-					 helper.saveChat( data, (error,result)=>{
+					 helper.saveChat( data, (error, result)=>{
 						if (error) {
 							registrationResponse.error = true;
 							registrationResponse.message = `Server error.`;
