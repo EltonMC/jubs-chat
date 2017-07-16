@@ -81,7 +81,7 @@ class Socket{
 					this.io.to(socket.id).emit(`add-message-response`,`Select a user to chat.`); 
 
 				}else{
-					helper.getChats(data.toIdUser, (error, result)=>{
+					helper.getUserSocket(data.toIdUser, (error, result)=>{
 						toIdSocket = result.idSocket;
 					});
 					let fromIdSocket = data.fromIdSocket;
