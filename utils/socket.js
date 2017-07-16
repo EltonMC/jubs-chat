@@ -69,23 +69,23 @@ class Socket{
 					
 					this.io.to(socket.id).emit(`add-message-response`,`Message cant be empty`); 
 
-				}else if(data.fromUserId === ''){
+				}else if(data.fromIdUser === ''){
 					
 					this.io.to(socket.id).emit(`add-message-response`,`Unexpected error, Login again.`); 
 
-				}else if(data.toUserId === ''){
+				}else if(data.toIdUser === ''){
 					
 					this.io.to(socket.id).emit(`add-message-response`,`Select a user to chat.`); 
 
 				}else{
 					
-					let toSocketId = data.toSocketId;
-					let fromSocketId = data.fromSocketId;
-					delete data.toSocketId;
+					let toIdSocket = data.toIdSocket;
+					let fromIdSocket = data.fromIdSocket;
+					delete data.toIdSocket;
 		        	data.timestamp = Math.floor(new Date() / 1000);
 
 					helper.insertMessages(data,( error , response)=>{
-						this.io.to(toSocketId).emit(`add-message-response`,data); 
+						this.io.to(toIdSocket).emit(`add-message-response`,data); 
 					});
 				}				
 		    });
