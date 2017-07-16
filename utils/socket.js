@@ -80,18 +80,18 @@ class Socket{
 					this.io.to(socket.id).emit(`add-message-response`,`Select a user to chat.`); 
 
 				}else{
-					helper.getChats(data.toIdUser, (error, result)=>{
-					
-					});
+
 					helper.getUserSocket(data.toIdUser, (error, result) =>{
 						toIdSocket = result[0].idSocket;
-					});
-					let fromIdSocket = data.fromIdSocket;
-		        	data.timestamp = Math.floor(new Date() / 1000);
+						data.toIdSocket = toIdSocket;
+						let fromIdSocket = data.fromIdSocket;
+						data.timestamp = Math.floor(new Date() / 1000);
 
-					helper.insertMessages(data,( error , response)=>{
-						this.io.to(toIdSocket).emit(`add-message-response`,data); 
+						helper.insertMessages(data,( error , response)=>{
+							this.io.to(toIdSocket).emit(`add-message-response`,data); 
+						});
 					});
+
 				}				
 		    });
 
