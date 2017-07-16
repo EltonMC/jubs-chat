@@ -255,7 +255,7 @@ class Routes{
 	            messages.message = `idChat cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
-	           	helper.getMessages( idChat , (error,result)=>{
+	           	helper.getMessages(idChat , (error,result)=>{
           			if (error) {
 	           			messages.error = true;
 	            		messages.message = `Server error.`;
