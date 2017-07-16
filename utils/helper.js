@@ -109,7 +109,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	
+
 	registerUser(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('users').insertOne(data, (err, result) =>{
@@ -244,30 +244,9 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	getMessages(idUser, toUserId, callback){
- 
-		const data = {
-	        '$or' : [
-	        	{ '$and': [
-	        			{
-	        				'toIdUser': idUser
-	        			},{
-	        				'fromIdUser': toIdUser
-	        			}
-	        		]
-	        	},{
-	        		'$and': [ 
-	        			{
-	        				'toIdUser': toUserId
-	        			}, {
-	        				'fromIdUser': idUser
-	        			}
-	        		]
-	        	},
-	        ]
-	    };
+	getMessages(idChat, callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('messages').find(data).sort({'timestamp':1}).toArray( (err, result) => {
+			db.collection('messages').find({idChat: idChat}).sort({'timestamp':1}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});

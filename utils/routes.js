@@ -246,28 +246,21 @@ class Routes{
 	    //     }
 		// });
 
-		this.app.post('/messages',(request,response) =>{
+		this.app.post('/messages/:id',(request,response) =>{
 
-			let idUser = request.body.idUser;
-			let toIdUser = request.body.toIdUser;
-			let messages = {}
+			let idChat = request.params.id;
 			
-			if (userId == '') {
+			if (idChat == '') {
 				messages.error = true;
-	            messages.message = `userId cant be empty.`;
+	            messages.message = `idChat cant be empty.`;
 	            response.status(200).json(messages);
 			}else{
-
-	           	helper.getMessages( userId, toUserId, (error,result)=>{
-
+	           	helper.getMessages( idChat , (error,result)=>{
           			if (error) {
-
 	           			messages.error = true;
 	            		messages.message = `Server error.`;
 	           			response.status(200).json(messages);
-
 	           		}else{
-
 						messages.error = false;								  
 						messages.messages = result;
 	           			response.status(200).json(messages);
