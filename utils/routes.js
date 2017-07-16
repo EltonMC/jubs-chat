@@ -103,7 +103,6 @@ class Routes{
 							response.status(404).json(registrationResponse);
 						}else{
 							registrationResponse.error = false;
-							data.idChat = result.insertedId;
 							registrationResponse.chat = data;
 							response.status(200).json(registrationResponse);
 						}
