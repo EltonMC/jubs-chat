@@ -91,8 +91,7 @@ class Routes{
 		 	data.timestamp = Math.floor(new Date() / 1000);
 
 			helper.chatCheck({idService: data.idService}, (err, result) =>{
-				let result = {};
-				if (result.idService == data.idService) {
+				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.message = `chat open`;
 					response.status(200).json(registrationResponse);
