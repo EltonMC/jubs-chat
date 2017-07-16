@@ -65,6 +65,9 @@ class Socket{
 			*/
 			socket.on('add-message', (data) => {
 				
+				let toIdSocket;
+				
+
 				if (data.message === '') {
 					
 					this.io.to(socket.id).emit(`add-message-response`,`Message cant be empty`); 
@@ -78,12 +81,11 @@ class Socket{
 					this.io.to(socket.id).emit(`add-message-response`,`Select a user to chat.`); 
 
 				}else{
-					
-					let toIdSocket = data.toIdSocket;
+					helper.getChats(data.toIdUser, (error, result)=>{
+						toIdSocket = result.idSocket;
+					});
 					let fromIdSocket = data.fromIdSocket;
-					delete data.toIdSocket;
 		        	data.timestamp = Math.floor(new Date() / 1000);
-
 					helper.insertMessages(data,( error , response)=>{
 						this.io.to(toIdSocket).emit(`add-message-response`,data); 
 					});

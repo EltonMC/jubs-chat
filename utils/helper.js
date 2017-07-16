@@ -199,6 +199,23 @@ class Helper{
 	}
 
 	/*
+	* Name of the Method : getUser
+	* Description : To fetch messages from DB between two users.
+	* Parameter : 
+	*		1) userId, toUserId
+	*		2) callback function
+	* Return : callback 
+	*/
+	getUserSocket(idUser, callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('users').find({idUser: idUser}).toArray( (err, result) => {
+			db.close();
+				callback(err,result);
+			});
+		});
+	}
+
+	/*
 	* Name of the Method : logout
 	* Description : To logout the loggedin user.
 	* Parameter : 
