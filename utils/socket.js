@@ -103,12 +103,6 @@ class Socket{
 					this.io.to(socket.id).emit('logout-response',{
 						error : false
 					});
-
-					socket.broadcast.emit('chat-list-response',{
-						error : false ,
-						userDisconnected : true ,
-						idSocket : socket.id
-					});
 				});	
 		    });
 
