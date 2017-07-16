@@ -294,7 +294,7 @@ class Routes{
 	           			response.status(200).json(chats);
 	           		}else{
 					    chats.error = false;											  
-	            		chats.chat = result._id;
+	            		chats.chat = result;
 	           			response.status(200).json(chats);
 	           		}
 				});
