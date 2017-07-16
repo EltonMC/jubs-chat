@@ -42,15 +42,15 @@ class Routes{
 
 
 		this.app.post('/user', (request, response) => {
-			// const data = {
-			// 	idUser: request.body.idUser,
-			// 	first_name: request.body.first_name,
-			// 	last_name: request.body.last_name,
-			// 	picture: request.body.picture,
-			// 	status: 'Y'
-			// }
+			const data = {
+				idUser: request.body.idUser,
+				first_name: request.body.first_name,
+				last_name: request.body.last_name,
+				picture: request.body.picture,
+				status: 'Y'
+			}
 
-			// let registrationResponse = {}
+			let registrationResponse = {}
 
 			// if (data.idUser === ''){
 	        //     registrationResponse.error = true;
@@ -73,7 +73,7 @@ class Routes{
 			// 				}else{
 			// 					registrationResponse.error = false;
 			// 					registrationResponse.message = `User registration successful.`;
-								response.status(200);
+								response.status(200).json(registrationResponse);
 			// 				}
 			// 			});					
 			// 		}
