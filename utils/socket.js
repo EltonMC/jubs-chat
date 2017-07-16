@@ -107,7 +107,7 @@ class Socket{
 					socket.broadcast.emit('chat-list-response',{
 						error : false ,
 						userDisconnected : true ,
-						socketId : socket.id
+						idSocket : socket.id
 					});
 				});	
 		    });
@@ -137,8 +137,8 @@ class Socket{
           		id : idUser,
           		value : {
           			$set :{
-          				socketId : userSocketId,
-          				online : 'Y'
+          				idSocket : userSocketId,
+          				status : 'Y'
           			}
           		}
           	}
