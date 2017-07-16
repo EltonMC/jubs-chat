@@ -83,8 +83,6 @@ class Socket{
 
 					helper.getUserSocket(data.toIdUser, (error, result) =>{
 						toIdSocket = result[0].idSocket;
-						data.toIdSocket = toIdSocket;
-						let fromIdSocket = data.fromIdSocket;
 						data.timestamp = Math.floor(new Date() / 1000);
 
 						helper.insertMessages(data,( error , response)=>{
