@@ -249,7 +249,8 @@ class Routes{
 		this.app.get('/messages/:id',(request,response) =>{
 
 			let idChat = request.params.id;
-			
+			let messages = {}
+
 			if (idChat == '') {
 				messages.error = true;
 	            messages.message = `idChat cant be empty.`;
@@ -268,7 +269,7 @@ class Routes{
 				});
 	        }
 		});
-
+		
 		this.app.get('/chats/:id',(request, response) =>{
 
 			let idUser = request.params.id;
