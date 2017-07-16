@@ -109,14 +109,15 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	// registerUser(data,callback){
-	// 	this.Mongodb.onConnect( (db,ObjectID) => {
-	// 		db.collection('users').insertOne(data, (err, result) =>{
-	// 			db.close();
-	// 			callback(err,result);
-	// 		});
-	// 	});
-	// }
+	
+	registerUser(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('users').insertOne(data, (err, result) =>{
+				db.close();
+				callback(err,result);
+			});
+		});
+	}
 
 	/*
 	* Name of the Method : userSessionCheck

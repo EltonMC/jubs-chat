@@ -58,25 +58,25 @@ class Routes{
 	            response.status(412).json(registrationResponse);
 			}else {
 				helper.userCheck({idUser: data.idUser}, (count) =>{
-					// let result = {};
+					let result = {};
 
-					// if (count > 0) {
-					// 	registrationResponse.error = true;
-					// 	registrationResponse.message = `id in use`;
-					// 	response.status(200).json(registrationResponse);
-					// } else {
-					// 	helper.registerUser( data, (error,result)=>{
-					// 		if (error) {
-					// 			registrationResponse.error = true;
-					// 			registrationResponse.message = `Server error.`;
-					// 			response.status(404).json(registrationResponse);
-					// 		}else{
-					// 			registrationResponse.error = false;
-					// 			registrationResponse.message = `User registration successful.`;
+					if (count > 0) {
+						registrationResponse.error = true;
+						registrationResponse.message = `id in use`;
+						response.status(200).json(registrationResponse);
+					} else {
+						helper.registerUser( data, (error,result)=>{
+							if (error) {
+								registrationResponse.error = true;
+								registrationResponse.message = `Server error.`;
+								response.status(404).json(registrationResponse);
+							}else{
+								registrationResponse.error = false;
+								registrationResponse.message = `User registration successful.`;
 								response.status(200).json(registrationResponse);
-					// 		}
-					// 	});					
-					// }
+							}
+						});					
+					}
 				});
 			}
 		});
