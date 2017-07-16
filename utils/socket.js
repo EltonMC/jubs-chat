@@ -143,10 +143,11 @@ class Socket{
           		}
           	}
 
-          	helper.addSocketId( data ,(error,response)=>{
+          	helper.addSocketId( data , (error, response)=>{
           		// socket id updated.
           	});
-          	next();
+			next();
+			  
         });
 
         this.socketEvents();

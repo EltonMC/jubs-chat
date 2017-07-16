@@ -81,6 +81,30 @@ class Routes{
 			}
 		});
 
+		this.app.get('/user/:id',(request, response) => {
+
+			let idUser = request.params.id;
+			let user = {}
+		
+			if (idUser == '') {
+				user.error = true;
+	            user.user = `id cant be empty.`;
+	            response.status(200).json(chats);
+			}else{
+				helper.getUser(idUser, (error, result)=>{
+          			if (error) {
+	           			user.error = true;
+	            		user.user = `Server error.`;
+	           			response.status(200).json(user);
+	           		}else{
+					    user.error = false;											  
+	            		user.user = result;
+	           			response.status(200).json(user);
+	           		}
+				});
+	    	}
+		})
+
 		// this.app.post('/registerUser',(request,response) =>{
 
 		// 	const data = {
@@ -269,7 +293,7 @@ class Routes{
 				});
 	        }
 		});
-		
+
 		this.app.get('/chats/:id',(request, response) =>{
 
 			let idUser = request.params.id;
