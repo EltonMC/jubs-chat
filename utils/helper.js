@@ -208,7 +208,7 @@ class Helper{
 	*/
 	getUserSocket(idUser, callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').find({idUser: idUser}).toArray( (err, result) => {
+			db.collection('users').find({idUser: idUser}).limit(1).toArray((err, result) => {
 			db.close();
 				callback(err,result);
 			});
