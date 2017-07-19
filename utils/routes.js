@@ -52,50 +52,6 @@ class Routes{
 			}
 		});
 
-		this.app.post('/users', (request, response) => {
-			const listUser = request.body.users;
-			
-			listUser.forEach(function (user, i) {
-				const data = {
-					idUser: user.idUser,
-					first_name: user.first_name,
-					last_name: user.last_name,
-					status: 'N'
-				}
-
-				let registrationResponse = {}
-
-				if (data.idUser === ''){
-					registrationResponse.error = true;
-					registrationResponse.message = `id cant be empty.`;
-					response.status(412).json(registrationResponse);
-				}else {
-					helper.userCheck({idUser: data.idUser}, (count) =>{
-						let result = {};
-
-						if (count > 0) {
-							registrationResponse.error = true;
-							registrationResponse.message = `id in use`;
-							response.status(200).json(registrationResponse);
-						} else {
-							helper.registerUser( data, (error,result)=>{
-								if (error) {
-									registrationResponse.error = true;
-									registrationResponse.message = `Server error.`;
-									response.status(404).json(registrationResponse);
-								}else{
-									registrationResponse.error = false;
-									registrationResponse.message = `User registration successful.`;
-									response.status(200).json(registrationResponse);
-								}
-							});					
-						}
-					});
-				}
-			});
-		});
-
-
 		this.app.get('/users/:id',(request, response) => {
 
 			let idUser = request.params.id;
