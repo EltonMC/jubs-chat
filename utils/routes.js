@@ -87,7 +87,7 @@ class Routes{
 	            user.user = `id cant be empty.`;
 	            response.status(200).json(chats);
 			}else{
-				helper.logoutUser(idUser, (error, result)=>{
+				helper.logout(idUser, (error, result)=>{
           			if (error) {
 	           			user.error = true;
 	            		user.user = `Server error.`;
