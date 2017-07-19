@@ -145,7 +145,7 @@ class Helper{
 		const lookup = {
 			'$lookup' :
 			{
-				'from': 'users',
+				'from': "users",
 				'localField': "idClient",
 				'foreignField': "idUser",
 				'as': "client_info"
