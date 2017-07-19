@@ -124,10 +124,24 @@ class Helper{
 	*/
 	
 	insertMessages(data,callback){
+
+		const newMessage = {
+  			$set :{
+				timestamp : data.timestamp,
+  				new_message : data.message
+  			}
+		  };
+
+
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('messages').insertOne(data, (err, result) =>{
 				db.close();
-				callback(err,result);
+				this.Mongodb.onConnect((db, ObjectID) => {
+					db.collection('chats').update( {_id: data.idChat}, newMessage ,(err, result) => {
+						db.close();
+						callback(err, result);
+					});
+				})
 			});
 		});
 	}
