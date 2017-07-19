@@ -222,7 +222,6 @@ class Helper{
 		
 		const data = {
   			$set :{
-				idSocket : null,
   				status : 'N'
   			}
 		  };

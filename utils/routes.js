@@ -19,7 +19,7 @@ class Routes{
 				first_name: request.body.first_name,
 				last_name: request.body.last_name,
 				picture: request.body.picture,
-				status: 'Y'
+				status: 'N'
 			}
 
 			let registrationResponse = {}
