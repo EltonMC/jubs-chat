@@ -146,8 +146,8 @@ class Helper{
 			'$lookup' :
 			{
 				'from': 'users',
-				'localField': idClient,
-				'foreignField': idUser,
+				'localField': "idClient",
+				'foreignField': "idUser",
 				'as': "client_info"
 			}
 		}; 
