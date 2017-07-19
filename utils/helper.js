@@ -149,7 +149,14 @@ class Helper{
 	        	},{
 					'idPro': userId
 	        	},
-	        ]
+			], 
+		 '$lookup':
+			{
+			from: "users",
+			localField: "idClient",
+			foreignField: "idUser",
+			as: "client_info"
+			}
 	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('chats').find(data).toArray( (err, result) => {
