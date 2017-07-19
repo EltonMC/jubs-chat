@@ -225,7 +225,8 @@ class Helper{
 				idSocket : null,
   				status : 'N'
   			}
-  		};
+		  };
+		
 		this.Mongodb.onConnect((db,ObjectID) => {
 			
 			let condition = {
@@ -234,7 +235,7 @@ class Helper{
   
 			db.collection('users').update( condition, data ,(err, result) => {
 				db.close();
-				callback(err,result.result);
+				callback(err, result.result);
 			});
 		});
 	}
