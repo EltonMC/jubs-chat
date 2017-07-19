@@ -14,7 +14,6 @@ class Socket{
 	socketEvents(){
 
 		this.io.on('connection', (socket) => {
-
 		
 			/**
 			* send the messages to the user

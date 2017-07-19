@@ -218,20 +218,18 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
-	logout(userID,isSocketId,callback){
+	logout(idUser,callback){
 		
 		const data = {
   			$set :{
-  				online : 'N'
+				idSocket : null,
+  				status : 'N'
   			}
   		};
-		this.Mongodb.onConnect( (db,ObjectID) => {
+		this.Mongodb.onConnect((db,ObjectID) => {
 			
-			let condition = {};
-			if (isSocketId) {
-				condition.socketId = userID;
-			}else{
-				condition._id = ObjectID(userID);
+			let condition = {
+				idUser : idUser
 			}
   
 			db.collection('users').update( condition, data ,(err, result) => {
