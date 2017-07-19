@@ -127,10 +127,9 @@ class Helper{
 
 		const newMessage = {
   			$set :{
-				timestamp : data.timestamp,
-  				new_message : data.message
+				timestamp : data.timestamp
   			}
-		  };
+		};
 
 
 		this.Mongodb.onConnect( (db,ObjectID) => {
