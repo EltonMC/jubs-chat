@@ -136,13 +136,11 @@ class Helper{
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('messages').insertOne(data, (err, result) =>{
 				db.close();
-				this.Mongodb.onConnect((db, ObjectID) => {
-					db.collection('chats').update( {_id: ObjectID(data.idChat)}, newMessage ,(err, result) => {
-						db.close();
-						callback(err, result);
-					});
+				db.collection('chats').update({_id: ObjectID(data.idChat)}, newMessage ,(err, result) => {
+					db.close();
+					callback(err, result);
+				});
 				})
-			});
 		});
 	}
 
