@@ -127,6 +127,7 @@ class Helper{
 
 		const newMessage = {
   			$set :{
+				new_message: data.message,
 				timestamp : data.timestamp
   			}
 		};
