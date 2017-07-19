@@ -161,7 +161,14 @@ class Helper{
 			], 
 	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').aggregate(lookup).find(data).toArray( (err, result) => {
+			db.collection('chats').aggregate([
+				{ "$lookup": {
+					"from": "users",
+					"localField": "idClient",
+					"foreignField": "idUser",
+					"as": "messagesList"
+				}}
+				]).find(data).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
