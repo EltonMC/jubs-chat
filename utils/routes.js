@@ -107,6 +107,7 @@ class Routes{
 				idPro : (request.body.idPro).toLowerCase(),
 				idService: request.body.idService,
 				title: request.body.title,
+				new_message: "",
 				status: 'open'
 			};
 
