@@ -163,7 +163,7 @@ class Helper{
 	        ]
 	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').find(data).toArray( (err, result) => {
+			db.collection('chats').find(data).sort({'timestamp':1}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
