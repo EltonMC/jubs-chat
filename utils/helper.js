@@ -163,7 +163,7 @@ class Helper{
 	        ]
 	    };
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').find(data).sort({'timestamp':1}).toArray( (err, result) => {
+			db.collection('chats').find(data).sort({'timestamp':-1}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
@@ -180,7 +180,7 @@ class Helper{
 	*/
 	getMessages(idChat, callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('messages').find({idChat: idChat}).sort({'timestamp':-1}).toArray( (err, result) => {
+			db.collection('messages').find({idChat: idChat}).sort({'timestamp':1}).toArray( (err, result) => {
 			db.close();
 				callback(err,result);
 			});
