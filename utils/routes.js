@@ -201,7 +201,7 @@ class Routes{
 	           		}else{
 					    chats.error = false;											  
 	            		chats.chat = result;
-	           			response.status(200).json(idChat);
+	           			response.status(200).json(chats);
 	           		}
 				});
 	    	}
