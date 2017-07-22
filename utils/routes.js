@@ -188,23 +188,23 @@ class Routes{
 			let idChat = request.params.id;
 			let chats = {};
 			
-			if (idChat == '') {
-				chats.error = true;
-	            chats.chat = `id cant be empty.`;
-	            response.status(200).json(chats);
-			}else{
-				helper.closeChats(idChat, (error, result)=>{
-          			if (error) {
-	           			chats.error = true;
-	            		chats.chat = `Server error.`;
-	           			response.status(200).json(chats);
-	           		}else{
-					    chats.error = false;											  
-	            		chats.chat = result;
-	           			response.status(200).json(chats);
-	           		}
-				});
-	    	}
+			// if (idChat == '') {
+			// 	chats.error = true;
+	        //     chats.chat = `id cant be empty.`;
+	        //     response.status(200).json(chats);
+			// }else{
+			// 	helper.closeChats(idChat, (error, result)=>{
+          	// 		if (error) {
+	        //    			chats.error = true;
+	        //     		chats.chat = `Server error.`;
+	        //    			response.status(200).json(chats);
+	        //    		}else{
+			// 		    chats.error = false;											  
+	        //     		chats.chat = result;
+	           			response.status(200).json(idChat);
+	        //    		}
+			// 	});
+	    	// }
 		});
 		
 		this.app.get('/', function (request, response) {
