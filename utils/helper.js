@@ -220,6 +220,24 @@ class Helper{
 			});
 		});
 	}
+	
+	/*
+	* Name of the Method : addSocketId
+	* Description : Updates the socket id of single user.
+	* Parameter : 
+	*		1) userId of the user
+	*		2) callback function
+	* Return : callback 
+	*/
+
+	closeChat(data,callback){
+		this.Mongodb.onConnect( (db,ObjectID) => {
+			db.collection('chats').update( { _id : data.id }, { status: 'close' } ,(err, result) => {
+				db.close();
+				callback(err,result.result);
+			});
+		});
+	}
 
 	/*
 	* Name of the Method : logout
