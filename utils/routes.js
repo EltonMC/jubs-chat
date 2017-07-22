@@ -183,28 +183,28 @@ class Routes{
 	    	}
 		});
 		
-		this.app.get('/chatss/:id',(request, response) =>{
+		this.app.put('/chats/:id',(request, response) =>{
 
-			let idUser = request.params.id;
-			let chats = {}
+			let idChat = request.params.id;
+			let chats = {};
 			
-			// if (idUser == '') {
-			// 	chats.error = true;
-	        //     chats.chat = `id cant be empty.`;
-	        //     response.status(200).json(chats);
-			// }else{
-			// 	helper.getChats(idUser, (error, result)=>{
-          	// 		if (error) {
-	        //    			chats.error = true;
-	        //     		chats.chat = `Server error.`;
-	        //    			response.status(200).json(chats);
-	        //    		}else{
-			// 		    chats.error = false;											  
-	        //     		chats.chat = result;
-	           			response.status(200).json(idUser);
-	        //    		}
-			// 	});
-	    	// }
+			if (idChat == '') {
+				chats.error = true;
+	            chats.chat = `id cant be empty.`;
+	            response.status(200).json(chats);
+			}else{
+				helper.closeChats(idChat, (error, result)=>{
+          			if (error) {
+	           			chats.error = true;
+	            		chats.chat = `Server error.`;
+	           			response.status(200).json(chats);
+	           		}else{
+					    chats.error = false;											  
+	            		chats.chat = result;
+	           			response.status(200).json(chats);
+	           		}
+				});
+	    	}
 		});
 		
 		this.app.get('/', function (request, response) {
