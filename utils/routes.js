@@ -32,28 +32,27 @@ class Routes{
 				    registrationResponse.message = `id cant be empty.`;
 				    response.status(412).json(registrationResponse);
 				}else {
-					response.send(user);
-					// helper.userCheck({idUser: user.idUser}, (count) =>{
-					// 	let result = {};
+					helper.userCheck({idUser: user.idUser}, (count) =>{
+						let result = {};
 
-					// 	if (count > 0) {
-					// 		registrationResponse.error = true;
-					// 		registrationResponse.message = `id in use`;
-					// 		// response.status(200).json(registrationResponse);
-					// 	} else {
-					// 		helper.registerUser( user, (error,result)=>{
-					// 			if (error) {
-					// 				registrationResponse.error = true;
-					// 				registrationResponse.message = `Server error.`;
-					// 				response.status(404).json(registrationResponse);
-					// 			}else{
-					// 				registrationResponse.error = false;
-					// 				registrationResponse.message = `User registration successful.`;
-					// 				// response.status(200).json(registrationResponse);
-					// 			}
-					// 		});					
-					// 	}
-					// });
+						if (count > 0) {
+							registrationResponse.error = true;
+							registrationResponse.message = `id in use`;
+							// response.status(200).json(registrationResponse);
+						} else {
+							helper.registerUser( user, (error,result)=>{
+								if (error) {
+									registrationResponse.error = true;
+									registrationResponse.message = `Server error.`;
+									response.status(404).json(registrationResponse);
+								}else{
+									registrationResponse.error = false;
+									registrationResponse.message = `User registration successful.`;
+									// response.status(200).json(registrationResponse);
+								}
+							});					
+						}
+					});
 				}
 			});
 			response.status(200).json(users);
