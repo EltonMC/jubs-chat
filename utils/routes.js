@@ -15,13 +15,16 @@ class Routes{
 
 		this.app.post('/user', (request, response) => {
 			const users = request.body.users;
+			let user;
+
 			users.forEach(function(data) {
-				let user = {
+				user = {
 					idUser: data.idUser,
 					first_name: data.first_name,
 					last_name: data.last_name,
 					status: 'N'
 				};
+
 				let registrationResponse = {}
 
 				if (user.idUser === ''){
