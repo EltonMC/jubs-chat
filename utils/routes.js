@@ -204,7 +204,7 @@ class Routes{
 	           			response.status(200).json(chats);
 	        //    		}
 			// 	});
-	    	}
+	    	// }
 		});
 		
 		this.app.get('/', function (request, response) {
