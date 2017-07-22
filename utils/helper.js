@@ -231,14 +231,14 @@ class Helper{
 	* Return : callback 
 	*/
 
-	closeChat(data,callback){
+	closeChat(data , callback){
 		let value = {
 			$set :{
 				status : 'close'
 			}
 		};          			
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').update( { 'idService' : data }, value ,(err, result) => {
+			db.collection('chats').update({'idService': 141 }, value ,(err, result) => {
 				db.close();
 				callback(err,result);
 			});
