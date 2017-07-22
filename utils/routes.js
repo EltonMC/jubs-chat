@@ -188,7 +188,7 @@ class Routes{
 			let id = request.params.id;
 			let chats = {};
 			
-			if (idChat == '') {
+			if (id == '') {
 				chats.error = true;
 	            chats.chat = `id cant be empty.`;
 	            response.status(200).json(chats);
