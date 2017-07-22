@@ -232,7 +232,7 @@ class Helper{
 
 	closeChat(data,callback){
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').update( { _id : data.id }, { status: 'close' } ,(err, result) => {
+			db.collection('chats').update( { _id : ObjectID(data) }, { status: 'close' } ,(err, result) => {
 				db.close();
 				callback(err,result.result);
 			});
