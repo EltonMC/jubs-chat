@@ -186,7 +186,7 @@ class Routes{
 		this.app.put('/chats/:id',(request, response) =>{
 
 			let idChat = request.params.id;
-			let chats = {}
+			let chats = {};
 			
 			if (idChat == '') {
 				chats.error = true;
