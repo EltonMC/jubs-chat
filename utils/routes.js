@@ -55,7 +55,7 @@ class Routes{
 				// 	});
 				// }
 			}, this);
-												response.status(200).json(registrationResponse);
+			response.status(200).json(users);
 
 			// const data = {
 			// 	idUser: request.body.idUser,
