@@ -183,17 +183,17 @@ class Routes{
 	    	}
 		});
 		
-		this.app.put('/chats/:id',(request, response) =>{
+		this.app.get('/chatss/:id',(request, response) =>{
 
-			// let idChat = request.params.id;
-			let chats = {};
+			let idUser = request.params.id;
+			let chats = {}
 			
-			// if (idChat == '') {
+			// if (idUser == '') {
 			// 	chats.error = true;
 	        //     chats.chat = `id cant be empty.`;
 	        //     response.status(200).json(chats);
 			// }else{
-			// 	helper.closeChats(idChat, (error, result)=>{
+			// 	helper.getChats(idUser, (error, result)=>{
           	// 		if (error) {
 	        //    			chats.error = true;
 	        //     		chats.chat = `Server error.`;
@@ -201,7 +201,7 @@ class Routes{
 	        //    		}else{
 			// 		    chats.error = false;											  
 	        //     		chats.chat = result;
-	           			response.status(200).json(chats);
+	           			response.status(200).json(idUser);
 	        //    		}
 			// 	});
 	    	// }
