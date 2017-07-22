@@ -238,7 +238,7 @@ class Helper{
 			}
 		};          			
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').update({'idService': StringToInt(data) }, value ,(err, result) => {
+			db.collection('chats').update({'idService': parseInt(data) }, value ,(err, result) => {
 				db.close();
 				callback(err,result);
 			});
