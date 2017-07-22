@@ -154,6 +154,7 @@ class Helper{
 
 	getChats(userId, callback){
  		const data = {
+  			'status': 'open',
 	        '$or' : [
 	        	{ 
 					'idClient': userId
