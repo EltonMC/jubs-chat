@@ -14,7 +14,6 @@ class Routes{
 	appRoutes(){
 
 		this.app.post('/user', (request, response) => {
-
 			const data = {
 				idUser: request.body.idUser,
 				first_name: request.body.first_name,
