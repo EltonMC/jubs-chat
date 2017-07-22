@@ -185,7 +185,7 @@ class Routes{
 		
 		this.app.put('/chats/:id',(request, response) =>{
 
-			let idChat = request.params.id;
+			let id = request.params.id;
 			let chats = {};
 			
 			if (idChat == '') {
@@ -193,7 +193,7 @@ class Routes{
 	            chats.chat = `id cant be empty.`;
 	            response.status(200).json(chats);
 			}else{
-				helper.closeChat(idChat, (error, result)=>{
+				helper.closeChat(id, (error, result)=>{
           			if (error) {
 	           			chats.error = true;
 	            		chats.chat = `Server error.`;

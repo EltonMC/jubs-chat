@@ -237,7 +237,7 @@ class Helper{
 			}
 		};          			
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').update( { _id : ObjectID(data) }, value ,(err, result) => {
+			db.collection('chats').update( { idService : data }, value ,(err, result) => {
 				db.close();
 				callback(err,result);
 			});
