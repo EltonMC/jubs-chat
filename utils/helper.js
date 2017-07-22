@@ -231,8 +231,13 @@ class Helper{
 	*/
 
 	closeChat(data,callback){
+		let value = {
+			$set :{
+				status : 'close'
+			}
+		};          			
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').update( { _id : ObjectID(data) }, { status: 'close' } ,(err, result) => {
+			db.collection('chats').update( { _id : ObjectID(data) }, value ,(err, result) => {
 				db.close();
 				callback(err,result.result);
 			});
@@ -247,6 +252,7 @@ class Helper{
 	*		2) callback function
 	* Return : callback 
 	*/
+
 	logout(idUser,callback){
 		
 		const data = {
