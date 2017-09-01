@@ -113,8 +113,7 @@ class Routes{
 
 			let registrationResponse = {}
 		 	data.timestamp = Math.floor(new Date() / 1000);
-
-			helper.chatCheck({idService: data.idService}, (err, result) =>{
+			helper.chatCheck({idService: data.idService, idPro: data.idPro}, (err, result) =>{
 				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.chat = result;
