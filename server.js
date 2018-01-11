@@ -24,7 +24,7 @@ class Server{
 
     appConfig(){        
         this.app.use(
-            //bodyParser.json()
+            bodyParser.json()
         );
         this.app.use(
         	cors()
