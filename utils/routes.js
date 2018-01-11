@@ -21,10 +21,7 @@ class Routes{
 				status: 'N'
 			}
 
-			response.status(200).json(data);
-
 			let registrationResponse = {}
-
 
 			if (data.idUser == '' || data.idUser == null){
 	            registrationResponse.error = true;
