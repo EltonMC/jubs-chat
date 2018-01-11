@@ -21,8 +21,8 @@ class Routes{
 				status: 'N'
 			}
 
-			response.status(200).json(data);
-			
+			response.status(200).json(request.body);
+
 			let registrationResponse = {}
 
 
