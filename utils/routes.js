@@ -15,9 +15,9 @@ class Routes{
 
 		this.app.post('/user', (request, response) => {
 			const data = {
-				idUser: request.body.idUser,
-				first_name: request.body.first_name,
-				last_name: request.body.last_name,
+				idUser: request.body.idUser.toString(),
+				first_name: request.body.first_name.toString(),
+				last_name: request.body.last_name.toString(),
 				status: 'N'
 			}
 
@@ -53,7 +53,7 @@ class Routes{
 
 		this.app.get('/users/:id',(request, response) => {
 
-			let idUser = request.params.id;
+			let idUser = request.params.id.toString();
 			let user = {}
 		
 			if (idUser == '') {
@@ -77,7 +77,7 @@ class Routes{
 
 		this.app.put('/users/:id',(request, response) => {
 
-			let idUser = request.params.id;
+			let idUser = request.params.id.toString();
 			let user = {}
 		
 			if (idUser == '') {
@@ -102,10 +102,10 @@ class Routes{
 		this.app.post('/chat',(request,response) =>{
 
 			const data = {
-				idClient : (request.body.idClient).toLowerCase(),
-				idPro : (request.body.idPro).toLowerCase(),
-				idService: request.body.idService,
-				title: request.body.title,
+				idClient : (request.body.idClient).toString(),
+				idPro : (request.body.idPro).toString(),
+				idService: request.body.idService.toString(),
+				title: request.body.title.toString(),
 				new_message: "",
 				status: 'open'
 			};
@@ -135,7 +135,7 @@ class Routes{
 
 		this.app.get('/messages/:id',(request,response) =>{
 
-			let idChat = request.params.id;
+			let idChat = request.params.id.toString();
 			let messages = {}
 
 			if (idChat == '') {
@@ -159,7 +159,7 @@ class Routes{
 
 		this.app.get('/chats/:id',(request, response) =>{
 
-			let idUser = request.params.id;
+			let idUser = request.params.id.toString();
 			let chats = {}
 			
 			if (idUser == '') {
@@ -183,7 +183,7 @@ class Routes{
 		
 		this.app.put('/chats/:id',(request, response) =>{
 
-			let id = request.params.id;
+			let id = request.params.id.toString();
 			let chats = {};
 			
 			if (id == '') {
