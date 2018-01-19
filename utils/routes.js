@@ -3,7 +3,6 @@
 
 const helper = require('./helper');
 const mongoDb = require("./db");
-const onesignal = require('./one-signal');
 
 class Routes{
 
