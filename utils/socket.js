@@ -40,12 +40,8 @@ class Socket{
 						toIdSocket = result[0].idSocket;
 						data.timestamp = Math.floor(new Date() / 1000);
 
-						helper.insertMessages(data,( error , response)=>{
-							helper.insertMessages(data, ( error , response)=>{
-									
-							});
+						helper.insertMessages(data,(error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data, ack => {
-
 							}); 
 						});
 					});
