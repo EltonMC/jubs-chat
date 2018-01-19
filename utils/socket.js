@@ -2,6 +2,8 @@
 
 const path = require('path');
 const helper = require('./helper');
+const OneSignalClient = require('node-onesignal');
+const client = new OneSignalClient('c6e40e76-770a-459e-a067-b25db23ec5df', 'ZTYwMDgzM2QtM2U0Yi00ZmNlLWFhMWItNDJjZTBkNTBjOGQ0');
 
 class Socket{
 
@@ -42,8 +44,8 @@ class Socket{
 
 						helper.insertMessages(data,( error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data);
-							socket.on ('message-success', (response) => {
-								console.log(response);
+							client.sendNotification('test notification', {
+								include_player_ids: '5dab5642-9d10-47bf-943c-24f321ec6f32'
 							});
 						});
 					});
