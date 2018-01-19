@@ -10,9 +10,6 @@ const cors = require('cors');
 const socketEvents = require('./utils/socket'); 
 const routes = require('./utils/routes'); 
 
-const OneSignalClient = require('node-onesignal');
-
-
 class Server{
 
     constructor(){
@@ -22,7 +19,7 @@ class Server{
         this.app = express();
         this.http = http.Server(this.app);
         this.socket = socketio(this.http);
-        this.onesignal = new OneSignalClient(['c6e40e76-770a-459e-a067-b25db23ec5df'], ['ZTYwMDgzM2QtM2U0Yi00ZmNlLWFhMWItNDJjZTBkNTBjOGQ0']);
+
     }
 
     appConfig(){        
