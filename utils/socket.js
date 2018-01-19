@@ -41,9 +41,10 @@ class Socket{
 						data.timestamp = Math.floor(new Date() / 1000);
 
 						helper.insertMessages(data,( error , response)=>{
-							this.io.to(toIdSocket).emit(`add-message-response`,data, (response) => {
-								console.log(response); // data will be 'woot'
-							  });
+							this.io.to(toIdSocket).emit(`add-message-response`,data);
+							socket.on ('message-success', (response) => {
+								console.log(response);
+							});
 						});
 					});
 
