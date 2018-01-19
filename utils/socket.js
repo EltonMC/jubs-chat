@@ -45,7 +45,7 @@ class Socket{
 						helper.insertMessages(data,( error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data);
 							client.sendNotification('test notification', {
-								include_player_ids: '5dab5642-9d10-47bf-943c-24f321ec6f32'
+								include_player_ids: ["5dab5642-9d10-47bf-943c-24f321ec6f32"]
 							});
 						});
 					});
