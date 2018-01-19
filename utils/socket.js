@@ -39,9 +39,12 @@ class Socket{
 					helper.getUserSocket(data.toIdUser, (error, result) =>{
 						toIdSocket = result[0].idSocket;
 						data.timestamp = Math.floor(new Date() / 1000);
-						helper.insertMessages(data,(error , response)=>{
-							this.io.to(toIdSocket).emit(`add-message-response`, data); 
-						});
+						this.io.to(toIdSocket).emit(`add-message-response`, response, function (ack) {
+							data.on = ack;
+							helper.insertMessages(data, (error , response)=>{});
+						}); 
+
+
 					});
 
 				}				
