@@ -39,7 +39,6 @@ class Socket{
 					helper.getUserSocket(data.toIdUser, (error, result) =>{
 						toIdSocket = result[0].idSocket;
 						data.timestamp = Math.floor(new Date() / 1000);
-						data.on = "ON";
 						helper.insertMessages(data,(error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`, data); 
 						});

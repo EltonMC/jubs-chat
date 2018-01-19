@@ -275,14 +275,6 @@ class Helper{
 		});
 	}
 
-	debugAck(data, callback){
-		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('users').insertOne({ack: data}, (err, result) =>{
-				db.close();
-				callback(err,result);
-			});
-		});
-	}
 }
  
 module.exports = new Helper();
