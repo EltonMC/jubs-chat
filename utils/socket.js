@@ -2,6 +2,7 @@
 
 const path = require('path');
 const helper = require('./helper');
+const onesignal = require('./one-signal');
 
 class Socket{
 
@@ -45,6 +46,7 @@ class Socket{
 							// client.sendNotification('test notification', {
 							// 	include_player_ids: ["5dab5642-9d10-47bf-943c-24f321ec6f32"]
 							// });
+							onesignal.sendMessage("5dab5642-9d10-47bf-943c-24f321ec6f32", "TESTE");
 						});
 					});
 
