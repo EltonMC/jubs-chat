@@ -2,8 +2,8 @@
 
 const path = require('path');
 const helper = require('./helper');
-// const OneSignalClient = require('node-onesignal');
-// const client = new OneSignalClient('c6e40e76-770a-459e-a067-b25db23ec5df', 'ZTYwMDgzM2QtM2U0Yi00ZmNlLWFhMWItNDJjZTBkNTBjOGQ0');
+const OneSignalClient = require('node-onesignal');
+const client = new OneSignalClient('c6e40e76-770a-459e-a067-b25db23ec5df', 'ZTYwMDgzM2QtM2U0Yi00ZmNlLWFhMWItNDJjZTBkNTBjOGQ0');
 
 class Socket{
 
