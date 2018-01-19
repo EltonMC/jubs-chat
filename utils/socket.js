@@ -42,14 +42,9 @@ class Socket{
 
 						helper.insertMessages(data,( error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data, ack => {
-									helper.insertMessages({
-										fromIdUser : "41",
-										message : "Quanto custa esse revólver?",
-										toIdUser : "40",
-										idChat: "5a590816612e3c0ccc181531",
-										timestamp : 1515784233,
-										on: ack}, ( error , response)=>{});
-								
+								helper.debugAck(ack, response => {
+									
+								});
 							}); 
 						});
 					});
