@@ -2,7 +2,7 @@ var request = 	require('request');
 
 class Onesignal{
 
-    sendMessage = function(device, message){
+    sendMessage (device, message){
         let restKey = 'ZTYwMDgzM2QtM2U0Yi00ZmNlLWFhMWItNDJjZTBkNTBjOGQ0';
         let appID = 'c6e40e76-770a-459e-a067-b25db23ec5df';
         request(
