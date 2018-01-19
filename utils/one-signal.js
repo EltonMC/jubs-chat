@@ -11,7 +11,9 @@ var sendMessage = function(device, message){
 				"authorization": "Basic "+restKey,
 				"content-type": "application/json"
 			},
-			json: true,
+            json: true,
+            rejectUnauthorized: false,
+            requestCert: false,
 			body:{
 				'app_id': appID,
 				'contents': {en: message},
