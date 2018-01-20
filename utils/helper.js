@@ -256,7 +256,7 @@ class Helper{
 
 	update(data,callback){
 		
-		const data = {
+		const set = {
   			$set :{
 				idOnesignal: data.idOnesignal.toString(),
   				status: 'N'
@@ -269,7 +269,7 @@ class Helper{
 				idUser : data.idUser
 			}
   
-			db.collection('users').update(condition, data ,(err, result) => {
+			db.collection('users').update(condition, set ,(err, result) => {
 				db.close();
 				callback(err, result.result);
 			});
