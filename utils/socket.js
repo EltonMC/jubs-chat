@@ -43,7 +43,9 @@ class Socket{
 
 						helper.insertMessages(data,( error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data);
-							onesignal.sendMessage(result[0].idOnesignal, data.message);
+							helper.getUserSocket(data.fromIdUser, (error, res ) =>{
+								onesignal.sendMessage(result[0].idOnesignal, res[0].first_name+": "+data.message);
+							});
 						});
 					});
 

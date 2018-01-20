@@ -242,10 +242,6 @@ class Routes{
 			response.send("Server ON!");
 		});
 
-		// this.app.get('/onesignal', function (request, response) {
-		// 	onesignal.sendMessage("5dab5642-9d10-47bf-943c-24f321ec6f32", "TESTE");
-		// 	response.send("ON!");
-		// });
 	}
 
 	routesConfig(){
