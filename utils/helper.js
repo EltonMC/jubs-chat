@@ -43,10 +43,10 @@ class Helper{
 			  },{
 				  'pro.idUser': data.idPro
 			  },
-		  ]
-	  };
+		  	]
+	  	};
 		this.Mongodb.onConnect( (db,ObjectID) => {
-			db.collection('chats').findOne(data, (err, result) => {
+			db.collection('chats').findOne(consult, (err, result) => {
 				db.close();
 				callback(err, result);
 			});
