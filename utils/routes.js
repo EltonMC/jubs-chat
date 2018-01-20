@@ -18,7 +18,7 @@ class Routes{
 				idUser: request.body.idUser.toString(),
 				first_name: request.body.first_name.toString(),
 				last_name: request.body.last_name.toString(),
-				idOnesignal: request.body.idonesignal.toString(),
+				idOnesignal: request.body.idOnesignal,
 				status: 'N'
 			}
 

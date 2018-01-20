@@ -258,7 +258,7 @@ class Helper{
 		
 		const set = {
   			$set :{
-				idOnesignal: data.idOnesignal.toString(),
+				idOnesignal: data.idOnesignal,
   				status: 'N'
   			}
 		  };
