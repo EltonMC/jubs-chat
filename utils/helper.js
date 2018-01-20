@@ -37,15 +37,10 @@ class Helper{
 	chatCheck(data, callback){
 
 		const consult = {
-		  '$and' : [
-			  { 
-				  'idService': data.idService
-			  },{
-				  'pro': {
-					  'idUser': data.idPro
-				  },
-			  },
-		  	]
+			'idService': data.idService,
+			'pro': {
+				'idUser': data.idPro
+			},
 	  	};
 		this.Mongodb.onConnect( (db,ObjectID) => {
 			db.collection('chats').findOne(consult, (err, result) => {
