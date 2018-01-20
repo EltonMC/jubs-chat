@@ -145,7 +145,7 @@ class Routes{
 				}
 			});
 
-			helper.chatCheck({idService: data.idService, pro: {idUser:request.body.idPro.toString()}}, (err, result) =>{
+			helper.chatCheck({idService: data.idService, pro.idUser: request.body.idPro.toString() }, (err, result) =>{
 				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.chat = result;
