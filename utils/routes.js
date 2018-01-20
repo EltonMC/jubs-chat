@@ -13,7 +13,7 @@ class Routes{
 	/* creating app Routes starts */
 	appRoutes(){
 
-		this.app.post('/user', (request, response) => {
+		this.app.post('/users', (request, response) => {
 			const data = {
 				idUser: request.body.idUser.toString(),
 				first_name: request.body.first_name.toString(),
@@ -101,7 +101,7 @@ class Routes{
 	    	}
 		})
 
-		this.app.post('/chat',(request,response) =>{
+		this.app.post('/chats',(request,response) =>{
 
 			const data = {
 				idService: request.body.idService.toString(),
@@ -136,7 +136,7 @@ class Routes{
 				}
 			});
 
-			helper.chatCheck({idService: data.idService, pro: data.pro.idUser}, (err, result) =>{
+			helper.chatCheck({idService: data.idService, pro: request.body.idPro.toString()}, (err, result) =>{
 				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.chat = result;
