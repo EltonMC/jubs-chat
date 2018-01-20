@@ -95,7 +95,7 @@ class Routes{
 	           		}else{
 					    user.error = false;											  
 	            		user.user = result;
-	           			response.status(200).json(user);
+	           			response.status(200).json(idOnesignal);
 	           		}
 				});
 	    	}
