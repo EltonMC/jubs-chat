@@ -19,7 +19,7 @@ class Onesignal{
                 body:{
                     'app_id': appID,
                     'contents': {en: message, br: message},
-                    'headings': {en: 'You received a new message', br: 'Você recebeu uma nova mensagem'}
+                    'headings': {en: 'You received a new message', br: 'Você recebeu uma nova mensagem'},
                     'include_player_ids': Array.isArray(device) ? device : [device]
                 }
             },
