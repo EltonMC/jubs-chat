@@ -87,18 +87,27 @@ class Routes{
 	            user.user = `id cant be empty.`;
 	            response.status(200).json(chats);
 			}else{
-				helper.update({idUser: idUser, idOnesignal: idOnesignal}, (error, result)=>{
-          			if (error) {
-	           			user.error = true;
-	            		user.user = `Server error.`;
-	           			response.status(200).json(user);
-	           		}else{
-					    user.error = false;											  
-	            		user.user = result;
-	           			response.status(200).json(idOnesignal);
-	           		}
-				});
-	    	}
+				helper.userCheck({idUser: idUser}, (count) =>{
+					let result = {};
+					if (count <= 0) {
+						registrationResponse.error = true;
+						registrationResponse.message = `user not registered`;
+						response.status(200).json(registrationResponse);
+					} else {
+						helper.update({idUser: idUser, idOnesignal: idOnesignal}, (error, result)=>{
+							if (error) {
+								user.error = true;
+								user.user = `Server error.`;
+								response.status(200).json(user);
+							}else{
+								user.error = false;											  
+								user.user = result;
+								response.status(200).json(user);
+							}
+						});
+					}
+				}
+			}
 		})
 
 		this.app.post('/chats',(request,response) =>{
