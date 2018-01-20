@@ -157,9 +157,9 @@ class Helper{
   			'status': 'open',
 	        '$or' : [
 	        	{ 
-					'idClient': userId
+					'client.idUser': userId
 	        	},{
-					'idPro': userId
+					'pro.idUser': userId
 	        	},
 	        ]
 	    };
