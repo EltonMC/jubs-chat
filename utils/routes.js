@@ -106,9 +106,9 @@ class Routes{
 							}
 						});
 					}
-				}
+				})
 			}
-		})
+		}
 
 		this.app.post('/chats',(request,response) =>{
 
