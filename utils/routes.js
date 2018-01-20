@@ -130,7 +130,7 @@ class Routes{
 					response.status(200).json(data);
 				}else{
 					data.error = false;											  
-					data.client = result;
+					data.client = result[0];
 				}
 			});
 
@@ -141,7 +141,7 @@ class Routes{
 					response.status(200).json(user);
 				}else{
 					data.error = false;											  
-					data.pro = result;
+					data.pro = result[0];
 				}
 			});
 
