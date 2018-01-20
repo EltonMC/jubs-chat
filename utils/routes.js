@@ -18,6 +18,7 @@ class Routes{
 				idUser: request.body.idUser.toString(),
 				first_name: request.body.first_name.toString(),
 				last_name: request.body.last_name.toString(),
+				idOnesignal: request.body.idonesignal.toString(),
 				status: 'N'
 			}
 
@@ -78,6 +79,7 @@ class Routes{
 		this.app.put('/users/:id',(request, response) => {
 
 			let idUser = request.params.id.toString();
+			let idOnesignal = request.body.idOnesignal;
 			let user = {}
 		
 			if (idUser == '') {
@@ -85,7 +87,7 @@ class Routes{
 	            user.user = `id cant be empty.`;
 	            response.status(200).json(chats);
 			}else{
-				helper.logout(idUser, (error, result)=>{
+				helper.update({idUser: idUser, idOnesignal: idOnesignal}, (error, result)=>{
           			if (error) {
 	           			user.error = true;
 	            		user.user = `Server error.`;
@@ -102,8 +104,6 @@ class Routes{
 		this.app.post('/chat',(request,response) =>{
 
 			const data = {
-				idClient : (request.body.idClient).toString(),
-				idPro : (request.body.idPro).toString(),
 				idService: request.body.idService.toString(),
 				title: request.body.title.toString(),
 				new_message: "",
@@ -111,8 +111,32 @@ class Routes{
 			};
 
 			let registrationResponse = {}
-		 	data.timestamp = Math.floor(new Date() / 1000);
-			helper.chatCheck({idService: data.idService, idPro: data.idPro}, (err, result) =>{
+			
+			data.timestamp = Math.floor(new Date() / 1000);
+			
+			helper.getUser(request.body.idClient.toString(), (error, result) => {
+				if (error) {
+					data.error = true;
+				 	data.user = `Server error.`;
+					response.status(200).json(data);
+				}else{
+					data.error = false;											  
+					data.client = result;
+				}
+			});
+
+			helper.getUser(request.body.idPro.toString(), (error, result) => {
+				if (error) {
+					user.error = true;
+				 	user.user = `Server error.`;
+					response.status(200).json(user);
+				}else{
+					data.error = false;											  
+					data.pro = result;
+				}
+			});
+
+			helper.chatCheck({idService: data.idService, pro: data.pro.idUser}, (err, result) =>{
 				if (result) {
 					registrationResponse.error = true;
 					registrationResponse.chat = result;

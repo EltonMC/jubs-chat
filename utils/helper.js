@@ -254,21 +254,22 @@ class Helper{
 	* Return : callback 
 	*/
 
-	logout(idUser,callback){
+	update(data,callback){
 		
 		const data = {
   			$set :{
-  				status : 'N'
+				idOnesignal: data.idOnesignal.toString(),
+  				status: 'N'
   			}
 		  };
 		
 		this.Mongodb.onConnect((db,ObjectID) => {
 			
 			let condition = {
-				idUser : idUser
+				idUser : data.idUser
 			}
   
-			db.collection('users').update( condition, data ,(err, result) => {
+			db.collection('users').update(condition, data ,(err, result) => {
 				db.close();
 				callback(err, result.result);
 			});
