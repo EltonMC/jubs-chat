@@ -43,7 +43,7 @@ class Socket{
 
 						helper.insertMessages(data,( error , response)=>{
 							this.io.to(toIdSocket).emit(`add-message-response`,data);
-							onesignal.sendMessage("5dab5642-9d10-47bf-943c-24f321ec6f32", "TESTE");
+							onesignal.sendMessage(result[0].idOnesignal, data.message);
 						});
 					});
 
