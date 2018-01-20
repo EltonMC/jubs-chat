@@ -41,7 +41,9 @@ class Helper{
 			  { 
 				  'idService': data.idService
 			  },{
-				  'pro.idUser': data.idPro
+				  'pro': {
+					  'idUser': data.idPro
+				  },
 			  },
 		  	]
 	  	};
